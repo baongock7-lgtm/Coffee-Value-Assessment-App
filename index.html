@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#EFE8D6">
+<meta name="theme-color" content="#4C6B3F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Coffee Value Assessment">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-
 <meta name="application-name" content="Coffee Value Assessment">
 <meta name="apple-mobile-web-app-title" content="Coffee Value Assessment">
 <title>Coffee Value Assessment</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="msapplication-TileColor" content="#4C6B3F">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -366,6 +364,7 @@
     <div class="section report-controls">
       <div class="section-title" data-i18n="reportPickScoreLabel">Gắn điểm Cupping (tuỳ chọn)</div>
       <select id="reportSessionSampleSelect"></select>
+      <div class="mini-label" id="reportMatchHint" style="margin-top:8px; margin-bottom:0;"></div>
     </div>
     <div class="actions" style="margin:0 16px 0;">
       <button class="btn btn-primary" id="exportPdfBtn" data-i18n="reportExportBtn">🖨️ Xuất PDF / In</button>
@@ -426,6 +425,7 @@
       actionsNew: 'Phiên mới', actionsSave: 'Lưu phiên này', historyEmpty: 'Chưa có phiên nào được lưu.',
       historyLoadError: 'Không tải được lịch sử.', historyNoName: 'Không tên', sessionHistoryTitle: 'Lịch sử phiên cupping',
       reportPickProfileLabel: 'Chọn hồ sơ mẫu', reportPickScoreLabel: 'Gắn điểm Cupping (tuỳ chọn)', reportNoScore: '— Không gắn điểm —',
+      reportAutoMatched: '✓ Tự động khớp điểm cupping theo tên mẫu "{name}"', reportNoAutoMatch: 'Không tìm thấy điểm cupping trùng tên mẫu — chọn thủ công ở trên nếu có.',
       reportNoProfileOpt: '— Chọn hồ sơ —', reportExportBtn: '🖨️ Xuất PDF / In', reportEmptyHint: 'Chọn một hồ sơ mẫu để xem trước báo cáo.',
       reportGenerated: 'Xuất lúc',
       toastMaxChoice: 'Tối đa {max} lựa chọn', toastSaveFail: 'Lưu thất bại, thử lại.', toastSaved: 'Đã lưu {n} mẫu trong phiên này',
@@ -472,6 +472,7 @@
       actionsNew: 'New session', actionsSave: 'Save this session', historyEmpty: 'No sessions saved yet.',
       historyLoadError: 'Could not load history.', historyNoName: 'Untitled', sessionHistoryTitle: 'Cupping Session History',
       reportPickProfileLabel: 'Select sample profile', reportPickScoreLabel: 'Attach cupping score (optional)', reportNoScore: '— No score —',
+      reportAutoMatched: '✓ Auto-matched cupping score by sample name "{name}"', reportNoAutoMatch: 'No cupping score found matching this sample name — pick one manually above if available.',
       reportNoProfileOpt: '— Select profile —', reportExportBtn: '🖨️ Export PDF / Print', reportEmptyHint: 'Select a sample profile to preview the report.',
       reportGenerated: 'Generated',
       toastMaxChoice: 'Up to {max} choices', toastSaveFail: 'Save failed, please try again.', toastSaved: 'Saved {n} sample(s) in this session',
@@ -1583,7 +1584,32 @@
       sessionSelect.innerHTML = opts;
     }catch(e){ sessionSelect.innerHTML = '<option value="">'+t('reportNoScore')+'</option>'; }
 
+    autoMatchScoreForSelectedProfile();
     renderReportPreview();
+  }
+
+  function autoMatchScoreForSelectedProfile(){
+    const pid = document.getElementById('reportProfileSelect').value;
+    const profile = reportCache.profiles.find(p=>p.id===pid);
+    const scoreSelect = document.getElementById('reportSessionSampleSelect');
+    const hintEl = document.getElementById('reportMatchHint');
+    if(!profile || !profile.meta || !(profile.meta.sampleNo||'').trim()){
+      if(hintEl) hintEl.textContent = '';
+      return;
+    }
+    const target = profile.meta.sampleNo.trim().toLowerCase();
+    for(const sess of reportCache.sessions){
+      const samples = (sess.affective && sess.affective.samples) || [];
+      for(let idx=0; idx<samples.length; idx++){
+        if((samples[idx].label||'').trim().toLowerCase() === target){
+          scoreSelect.value = sess.id+'::'+idx;
+          if(hintEl) hintEl.textContent = t('reportAutoMatched').replace('{name}', profile.meta.sampleNo);
+          return;
+        }
+      }
+    }
+    scoreSelect.value = '';
+    if(hintEl) hintEl.textContent = t('reportNoAutoMatch');
   }
 
   // ---------- Language switching ----------
@@ -1632,8 +1658,12 @@
       showToast(t('toastNewSession'));
       window.scrollTo({top:0, behavior:'smooth'});
     });
-    document.getElementById('reportProfileSelect').addEventListener('change', renderReportPreview);
-    document.getElementById('reportSessionSampleSelect').addEventListener('change', renderReportPreview);
+    document.getElementById('reportProfileSelect').addEventListener('change', ()=>{ autoMatchScoreForSelectedProfile(); renderReportPreview(); });
+    document.getElementById('reportSessionSampleSelect').addEventListener('change', ()=>{
+      const hintEl = document.getElementById('reportMatchHint');
+      if(hintEl) hintEl.textContent = '';
+      renderReportPreview();
+    });
     document.getElementById('exportPdfBtn').addEventListener('click', ()=>{ window.print(); });
   }
 
@@ -1654,15 +1684,15 @@
 })();
 </script>
 
+
 <script>
-/* PWA install + offline cache registration */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').catch(function (err) {
-      console.log('Service worker registration failed:', err);
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function (error) {
+        console.log('Service Worker registration failed:', error);
+      });
     });
-  });
-}
+  }
 </script>
 </body>
 </html>
