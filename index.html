@@ -212,6 +212,11 @@
     .report-paper{ box-shadow:none; }
   }
 </style>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+
 </head>
 <body>
 
@@ -1559,6 +1564,15 @@
   loadProfileHistory();
   loadSessionHistory();
 })();
+</script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  });
+}
 </script>
 
 </body>
