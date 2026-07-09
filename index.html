@@ -6,7 +6,19 @@
 <meta name="theme-color" content="#15120F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>CVA Cupping</title>
+<title>Coffee Value Assessment</title>
+<meta name="application-name" content="Coffee Value Assessment">
+<meta name="apple-mobile-web-app-title" content="Coffee Value Assessment">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#15120F">
+<meta name="background-color" content="#15120F">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -212,11 +224,6 @@
     .report-paper{ box-shadow:none; }
   }
 </style>
-
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="mobile-web-app-capable" content="yes">
-
 </head>
 <body>
 
@@ -1568,12 +1575,24 @@
 
 
 <script>
+// PWA: offline cache + update handling
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').then(function (registration) {
+      registration.addEventListener('updatefound', function () {
+        const newWorker = registration.installing;
+        if (!newWorker) return;
+        newWorker.addEventListener('statechange', function () {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            console.log('Coffee Value Assessment updated. Refresh to use the newest version.');
+          }
+        });
+      });
+    }).catch(function (error) {
+      console.log('Service worker registration failed:', error);
+    });
   });
 }
 </script>
-
 </body>
 </html>
