@@ -6,6 +6,13 @@
 <meta name="theme-color" content="#EFE8D6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Coffee Value Assessment">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
 <meta name="application-name" content="Coffee Value Assessment">
 <meta name="apple-mobile-web-app-title" content="Coffee Value Assessment">
 <title>Coffee Value Assessment</title>
@@ -1647,5 +1654,15 @@
 })();
 </script>
 
+<script>
+/* PWA install + offline cache registration */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function (err) {
+      console.log('Service worker registration failed:', err);
+    });
+  });
+}
+</script>
 </body>
 </html>
