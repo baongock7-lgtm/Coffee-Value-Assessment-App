@@ -201,7 +201,7 @@
   .report-table{width:100%; border-collapse:collapse; font-size:12px; margin-bottom:6px;}
   .report-table th{text-align:left; font-size:10px; text-transform:uppercase; color:#8A7458; padding:4px 6px; border-bottom:1px solid #DDD2C0;}
   .report-table td{padding:4px 6px; border-bottom:1px solid #EDE6D8;}
-  .report-table td.rl{color:#8A7458; width:40%;}
+  .report-table td.rl{color:#8A7458; width:45%;}
   .report-line{font-size:12px; margin-top:6px; line-height:1.5;}
   .report-score-section{text-align:center;}
   .report-total-label{font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#8A7458;}
@@ -218,21 +218,33 @@
   .report-footer{text-align:center; font-size:10px; color:#B0A48E; margin-top:16px;}
   .report-empty{text-align:center; padding:40px 20px; color:#8A7458; font-size:13px;}
 
+  .report-page{ }
+  .report-page + .report-page{ margin-top:26px; padding-top:22px; border-top:2px dashed #D6C8A3; position:relative; }
+  .report-page + .report-page::before{ content:'TRANG 2'; position:absolute; top:-11px; left:50%; transform:translateX(-50%); background:#F7F3EC; padding:0 10px; font-size:9px; letter-spacing:0.1em; color:#8A7458; font-family:var(--font-display); font-weight:700; }
   @media print{
-    @page{ margin:12mm; }
+    @page{ margin:16mm; size:A4; }
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; color-adjust:exact !important; }
     body{ background:#fff !important; }
     body *{ visibility:hidden !important; }
     #printReportOuter, #printReportOuter *{ visibility:visible !important; }
     #printReportOuter{ position:absolute; left:0; top:0; width:100%; margin:0; }
-    .report-paper{ box-shadow:none; border-radius:0; background:#fff; }
+    .report-page{ page-break-after:always; break-after:page; }
+    .report-page:last-child{ page-break-after:auto; break-after:auto; }
+    .report-page + .report-page{ margin-top:0; padding-top:0; border-top:none; }
+    .report-page + .report-page::before{ display:none; }
+    .report-paper{ padding:26px; font-size:12.5px; }
+    .report-header{ padding-bottom:12px; margin-bottom:12px; }
+    .report-title{ font-size:24px; margin-top:4px; }
+    .report-meta-table{ margin-top:9px; font-size:12px; }
+    .report-meta-table td{ padding:3px 6px; }
+    .report-section{ margin-bottom:14px; }
+    .report-section-title{ font-size:13px; padding-bottom:4px; margin-bottom:8px; }
+    .report-table{ font-size:12px; margin-bottom:6px; }
+    .report-table th, .report-table td{ padding:5px 6px; }
+    .report-line{ font-size:12px; margin-top:5px; line-height:1.5; }
   }
 </style>
-
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="format-detection" content="telephone=no">
-
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 
@@ -271,14 +283,14 @@
     </div>
 
     <div class="tabbar" id="tabbar">
-      <div class="tab active" data-tab="physical"><span data-i18n="tabPhysical">VẬT LÝ</span><span class="dot"></span></div>
+      <div class="tab active" data-tab="extrinsic"><span data-i18n="tabExtrinsic">THÔNG TIN MẪU</span><span class="dot"></span></div>
+      <div class="tab" data-tab="physical"><span data-i18n="tabPhysical">VẬT LÝ</span><span class="dot"></span></div>
       <div class="tab" data-tab="descriptive"><span data-i18n="tabDescriptive">MÔ TẢ</span><span class="dot"></span></div>
-      <div class="tab" data-tab="extrinsic"><span data-i18n="tabExtrinsic">NGOẠI LAI</span><span class="dot"></span></div>
     </div>
 
-    <div class="panel active" id="panel-physical"></div>
+    <div class="panel active" id="panel-extrinsic"></div>
+    <div class="panel" id="panel-physical"></div>
     <div class="panel" id="panel-descriptive"></div>
-    <div class="panel" id="panel-extrinsic"></div>
 
     <div class="actions">
       <button class="btn btn-primary" id="saveProfileBtn" data-i18n="actionsSaveProfile">Lưu hồ sơ này</button>
@@ -396,7 +408,7 @@
       areaProfiles: 'Hồ sơ mẫu', areaCupping: 'Thử nếm', areaReport: 'Báo cáo',
       metaDate: 'Ngày', metaCupper: 'Người chấm / Cupper', metaCupperPh: 'Tên của bạn',
       metaPurpose: 'Mục đích / Purpose', metaPurposePh: 'VD: Kiểm định lô hàng, QC...',
-      tabPhysical: 'VẬT LÝ', tabDescriptive: 'MÔ TẢ', tabExtrinsic: 'THÔNG TIN KHÁC',
+      tabPhysical: 'VẬT LÝ', tabDescriptive: 'MÔ TẢ', tabExtrinsic: 'THÔNG TIN MẪU',
       profileSwitcherTitle: 'Danh sách hồ sơ mẫu', profileAddBtn: '+ Thêm hồ sơ mẫu mới', profileSamplePh: 'Tên/Số mẫu',
       actionsSaveProfile: 'Lưu hồ sơ này', profileHistoryTitle: 'Lịch sử hồ sơ mẫu', profileEmptyHistory: 'Chưa có hồ sơ nào được lưu.',
       guideLabel: 'Hướng dẫn',
@@ -586,7 +598,7 @@
 
   let sessionState = makeSessionState();
   let currentArea = 'profiles';
-  let currentTab = 'physical';
+  let currentTab = 'extrinsic';
 
   const $ = sel => document.querySelector(sel);
   const cupIconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h13a3 3 0 0 1 0 6h-1"/><path d="M3 8v7a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V8"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>';
@@ -1434,7 +1446,7 @@
         ${reportRow(t('physicalMoistureLabel'), p.moisture ? p.moisture+'%' : '')}
         ${reportRow(t('physicalNotesTitle'), p.notes)}
       </table>
-      ${sieveRows ? `<table class="report-table"><tr><th>Screen</th><th>Weight</th></tr>${sieveRows}</table>` : ''}
+      ${sieveRows ? `<table class="report-table"><tr><th style="width:45%">Screen</th><th>Weight</th></tr>${sieveRows}</table>` : ''}
     </div>`;
   }
 
@@ -1448,7 +1460,7 @@
     return `<div class="report-section">
       <div class="report-section-title">${t('tabDescriptive')}</div>
       ${d.roastLevel?`<div class="report-line"><b>${t('descRoastLabel')}:</b> ${escapeHtml(d.roastLevel)}</div>`:''}
-      <table class="report-table"><tr><th>Section</th><th>Intensity</th><th>Descriptors</th></tr>${rows}</table>
+      <table class="report-table"><tr><th style="width:30%">Section</th><th style="width:20%">Intensity</th><th>Descriptors</th></tr>${rows}</table>
       ${d.mainTastes&&d.mainTastes.length?`<div class="report-line"><b>Main Tastes:</b> ${escapeHtml(d.mainTastes.join(', '))}</div>`:''}
       ${d.acidityNotes?`<div class="report-line"><b>Acidity:</b> ${escapeHtml(d.acidityNotes)}</div>`:''}
       ${d.sweetnessNotes?`<div class="report-line"><b>Sweetness:</b> ${escapeHtml(d.sweetnessNotes)}</div>`:''}
@@ -1534,7 +1546,7 @@
   function buildReportHtml(profile, sample){
     if(!profile){ return `<div class="report-empty">${t('reportEmptyHint')}</div>`; }
     const meta = profile.meta || {};
-    return `
+    const page1 = `
       <div class="report-header">
         <div class="report-brand">SCA Coffee Value Assessment</div>
         <div class="report-title">${escapeHtml(meta.sampleNo || t('historyNoName'))}</div>
@@ -1544,12 +1556,15 @@
           ${reportRow(t('metaPurpose'), meta.purpose)}
         </table>
       </div>
+      ${buildExtrinsicReportHtml(profile.extrinsic)}
       ${buildPhysicalReportHtml(profile.physical)}
       ${buildDescriptiveReportHtml(profile.descriptive)}
+    `;
+    const page2 = `
       ${buildAffectiveReportHtml(sample)}
-      ${buildExtrinsicReportHtml(profile.extrinsic)}
       <div class="report-footer">${t('reportGenerated')} ${new Date().toLocaleString()}</div>
     `;
+    return `<div class="report-page">${page1}</div><div class="report-page">${page2}</div>`;
   }
 
   function renderReportPreview(){
@@ -1695,14 +1710,6 @@
 })();
 </script>
 
-
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(console.error);
-  });
-}
-</script>
-
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js')}</script>
 </body>
 </html>
