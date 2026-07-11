@@ -1,13 +1,13 @@
 {
   "name": "Coffee Value Assessment",
   "short_name": "CVA",
-  "description": "Coffee Value Assessment cupping and sample profile app.",
-  "start_url": "./index.html",
+  "description": "Coffee Value Assessment cupping and sample profile app",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#4C6B3F",
   "background_color": "#EFE8D6",
+  "theme_color": "#0F3B2E",
   "icons": [
     {
       "src": "icon-192.png",
