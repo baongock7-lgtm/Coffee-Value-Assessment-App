@@ -315,72 +315,47 @@
     </div>
 
     <div class="section">
-      <div class="mode-toggle" id="assessModeToggle">
-        <div class="mode-btn active" data-assessmode="descriptive" data-i18n="assessModeDescriptive">Mô tả</div>
-        <div class="mode-btn" data-assessmode="affective" data-i18n="assessModeAffective">Cảm nhận</div>
+      <div class="guide-box">
+        <div class="guide-head" data-guide-toggle="combined">
+          <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
+          <span class="guide-chevron" id="chev_combined">▾</span>
+        </div>
+        <div class="guide-body" id="guideBody_combined"><p data-i18n="guideCombined"></p></div>
+      </div>
+      <div class="guide-box" style="border-left-color:var(--good); margin-bottom:0;">
+        <div class="guide-head" id="legendToggle">
+          <span class="label">📏 <span data-i18n="scaleLegendTitle">Thang điểm 9 mức (theo CVA)</span></span>
+          <span class="guide-chevron open" id="legendChevron">▾</span>
+        </div>
+        <div class="guide-body open" id="legendBody">
+          <div class="legend-grid" id="scaleLegend"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="mode-toggle" id="modeToggle">
+        <div class="mode-btn active" data-mode="step" data-i18n="affModeStep">Theo bước</div>
+        <div class="mode-btn" data-mode="sample" data-i18n="affModeSample">Theo mẫu</div>
       </div>
 
-      <div id="descriptiveAssessWrap">
-        <div class="guide-box">
-          <div class="guide-head" data-guide-toggle="descSession">
-            <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
-            <span class="guide-chevron" id="chev_descSession">▾</span>
-          </div>
-          <div class="guide-body" id="guideBody_descSession"><p data-i18n="guideDescriptive"></p></div>
-        </div>
+      <div id="stepModeWrap">
         <div class="step-nav-head">
-          <button class="step-nav-btn" id="descPrevStepBtn">‹</button>
+          <button class="step-nav-btn" id="prevStepBtn">‹</button>
           <div class="step-nav-label">
-            <div id="descStepLabel">STEP 1/8 · ROAST LEVEL</div>
-            <div id="descStepSub" class="mini-label" style="margin:2px 0 0;">Mức rang</div>
+            <div id="stepLabel">STEP 1/10 · FRAGRANCE</div>
+            <div id="stepSub" class="mini-label" style="margin:2px 0 0;">Hương khô</div>
           </div>
-          <button class="step-nav-btn" id="descNextStepBtn">›</button>
+          <button class="step-nav-btn" id="nextStepBtn">›</button>
         </div>
-        <div class="step-dots" id="descStepDots"></div>
-        <div id="descStepContent" style="margin-top:14px;"></div>
+        <div class="step-dots" id="stepDots"></div>
+        <div id="stepContent" style="margin-top:14px;"></div>
       </div>
 
-      <div id="affectiveAssessWrap" style="display:none;">
-        <div class="guide-box">
-          <div class="guide-head" data-guide-toggle="affective">
-            <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
-            <span class="guide-chevron" id="chev_affective">▾</span>
-          </div>
-          <div class="guide-body" id="guideBody_affective"><p data-i18n="guideAffective"></p></div>
-        </div>
-        <div class="guide-box" style="border-left-color:var(--good); margin-bottom:0;">
-          <div class="guide-head" id="legendToggle">
-            <span class="label">📏 <span data-i18n="scaleLegendTitle">Thang điểm 9 mức (theo CVA)</span></span>
-            <span class="guide-chevron open" id="legendChevron">▾</span>
-          </div>
-          <div class="guide-body open" id="legendBody">
-            <div class="legend-grid" id="scaleLegend"></div>
-          </div>
-        </div>
-
-        <div class="mode-toggle" id="modeToggle" style="margin-top:14px;">
-          <div class="mode-btn active" data-mode="step" data-i18n="affModeStep">Theo bước</div>
-          <div class="mode-btn" data-mode="sample" data-i18n="affModeSample">Theo mẫu</div>
-        </div>
-
-        <div id="stepModeWrap">
-          <div class="step-nav-head">
-            <button class="step-nav-btn" id="prevStepBtn">‹</button>
-            <div class="step-nav-label">
-              <div id="stepLabel">STEP 1/9 · FRAGRANCE</div>
-              <div id="stepSub" class="mini-label" style="margin:2px 0 0;">Hương khô</div>
-            </div>
-            <button class="step-nav-btn" id="nextStepBtn">›</button>
-          </div>
-          <div class="step-dots" id="stepDots"></div>
-          <div id="stepContent" style="margin-top:14px;"></div>
-        </div>
-
-        <div id="sampleModeWrap" style="display:none;">
-          <div class="mini-label" data-i18n="affReviewHint" style="margin-top:0;">Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc</div>
-          <div class="cata-grid" id="reviewSampleChips" style="margin-bottom:14px;"></div>
-          <div id="reviewContent"></div>
-        </div>
+      <div id="sampleModeWrap" style="display:none;">
+        <div class="mini-label" data-i18n="affReviewHint" style="margin-top:0;">Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc</div>
+        <div class="cata-grid" id="reviewSampleChips" style="margin-bottom:14px;"></div>
+        <div id="reviewContent"></div>
       </div>
     </div>
 
@@ -437,6 +412,8 @@
       guidePhysical: 'Cân 350g mẫu cà phê nhân xanh, so màu trên nền đen. Đếm lỗi theo Category 1 (tỉ lệ quy đổi 1:1 đến 5:1) và Category 2 (3:1 đến 10:1) — hệ thống tự tính full defect equivalent. Đo độ ẩm bằng máy hiệu chuẩn ISO 6673. Sàng kích cỡ hạt qua lưới #13–#19.',
       guideDescriptive: 'Đánh giá khách quan, không thiên vị. Ngửi bã khô để chấm Fragrance; ngửi sau khi pha & phá váng để chấm Aroma. Kéo thanh cường độ 0–15 cho từng mục (chỉ phản ánh độ mạnh, không phải chất lượng). Chọn tối đa 5 mô tả cho Fragrance/Aroma và Flavor/Aftertaste, tối đa 2 cho Main Tastes và Mouthfeel. Acidity & Sweetness chỉ ghi mô tả tự do.',
       guideAffective: 'Đây là đánh giá chủ quan — sở thích của bạn hoặc thị trường mục tiêu. Thêm tất cả mẫu vào phiên, rồi chấm THEO BƯỚC: xong Fragrance cho mọi mẫu mới sang Aroma, cứ thế đến Overall — giống cupping thật trên bàn. Bước cuối đánh dấu cốc không đồng nhất (−2đ/cốc) và cốc lỗi (−4đ/cốc). Dùng "Theo mẫu" để rà lại điểm 1 mẫu bất kỳ.',
+      guideCombined: 'Mỗi bước gồm cả phần Mô tả (khách quan: cường độ, mô tả hương vị) lẫn Cảm nhận (chủ quan: chấm điểm 1-9) cho cùng một mục — làm xong cả hai cho tất cả mẫu rồi mới sang bước kế, không cần chuyển qua lại. Thêm tất cả mẫu vào phiên trước khi bắt đầu.',
+      descSectionLabel: 'Mô tả', affSectionLabel: 'Cảm nhận',
       guideExtrinsic: 'Ghi lại thuộc tính ngoại lai (không phải cảm quan) làm tăng giá trị cà phê: nguồn gốc canh tác, sơ chế, giao dịch, chứng nhận. Nên điền SAU KHI hoàn tất Vật lý/Mô tả/Cảm nhận để tránh gây thiên vị cho người chấm.',
       scaleLegendTitle: 'Thang điểm 9 mức (theo CVA)',
       scaleLegendCaption: 'Bộ nhãn này giống hệt nhau cho cả 8 mục (Fragrance, Aroma, Flavor... Overall) — CVA không quy định mô tả hương vị riêng theo từng điểm (VD: không có "chua 6 điểm = vị chanh"). Điểm số phản ánh mức bạn thích/đánh giá cao mục đó đến đâu so với mức trung tính (5), không phải cường độ khách quan.',
@@ -451,7 +428,6 @@
       descCataMax5: 'Mô tả (tối đa 5)', descRetronasalMax5: 'Mô tả retronasal (tối đa 5)', descMainTastesMax2: 'Main Tastes (tối đa 2)', descMouthfeelMax2: 'Đặc điểm (tối đa 2)',
       descNotesLabel: 'Ghi chú', descAcidityFreeLabel: 'Mô tả tự do (juicy, tart, bright, winey...)', descSweetnessFreeLabel: 'Mô tả tự do',
       affScoreboardTitle: 'Bảng điểm phiên cupping', affAddSample: '+ Thêm mẫu vào phiên', affModeStep: 'Theo bước', affModeSample: 'Theo mẫu',
-      assessModeDescriptive: 'Mô tả', assessModeAffective: 'Cảm nhận',
       affReviewHint: 'Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc', affStepPrefix: 'BƯỚC',
       affNonUniformTitle: 'Non-Uniform Cups', affDefectiveTitle: 'Defective Cups', affNotesPh: 'Ghi chú cho mẫu này...',
       affScorePrefix: 'Final score —', affSpecialty: 'SPECIALTY', affBelowThreshold: 'DƯỚI NGƯỠNG',
@@ -485,6 +461,8 @@
       guidePhysical: 'Weigh a 350g green coffee sample and compare color against a black background. Count defects by Category 1 (1:1 to 5:1 ratio) and Category 2 (3:1 to 10:1 ratio) — the app calculates full defect equivalents for you. Measure moisture with a meter calibrated to ISO 6673. Sieve bean size across screens #13–#19.',
       guideDescriptive: 'Assess objectively, without bias. Smell the dry grounds to rate Fragrance; smell after brewing and breaking the crust to rate Aroma. Drag the 0–15 intensity slider for each section (it reflects strength, not quality). Pick up to 5 descriptors for Fragrance/Aroma and Flavor/Aftertaste, up to 2 for Main Tastes and Mouthfeel. Acidity & Sweetness use free-text descriptors only.',
       guideAffective: 'This is a subjective assessment — your own preference or the preference of a target market. Add every sample to the session, then rate STEP BY STEP: finish Fragrance for all samples before moving to Aroma, and so on through Overall — mirroring a real cupping table. The last step marks non-uniform cups (−2 pts each) and defective cups (−4 pts each). Use "By sample" to review the full score for any single sample.',
+      guideCombined: 'Each step covers both the Descriptive side (objective: intensity, flavor descriptors) and the Affective side (subjective: 1-9 rating) for the same section — finish both for every sample before moving to the next step, no switching back and forth. Add every sample to the session before you start.',
+      descSectionLabel: 'Descriptive', affSectionLabel: 'Affective',
       guideExtrinsic: 'Record extrinsic (non-sensory) attributes that add value to the coffee: farming origin, processing, trading and certifications. Fill this in AFTER completing Physical/Descriptive/Affective to avoid biasing the taster.',
       scaleLegendTitle: '9-Point Scale (per CVA)',
       scaleLegendCaption: 'This label set is identical for all 8 sections (Fragrance, Aroma, Flavor... Overall) — the CVA does not define separate flavor descriptions per point (e.g., there is no "acidity 6 = citrus-like"). The score reflects how much you like/value that section relative to neutral (5), not an objective intensity.',
@@ -499,7 +477,6 @@
       descCataMax5: 'Descriptors (up to 5)', descRetronasalMax5: 'Retronasal descriptors (up to 5)', descMainTastesMax2: 'Main Tastes (up to 2)', descMouthfeelMax2: 'Characteristics (up to 2)',
       descNotesLabel: 'Notes', descAcidityFreeLabel: 'Free descriptors (juicy, tart, bright, winey...)', descSweetnessFreeLabel: 'Free descriptors',
       affScoreboardTitle: 'Session Scoreboard', affAddSample: '+ Add sample to session', affModeStep: 'By step', affModeSample: 'By sample',
-      assessModeDescriptive: 'Descriptive', assessModeAffective: 'Affective',
       affReviewHint: 'Pick a sample to review all 8 attributes at once', affStepPrefix: 'STEP',
       affNonUniformTitle: 'Non-Uniform Cups', affDefectiveTitle: 'Defective Cups', affNotesPh: 'Notes for this sample...',
       affScorePrefix: 'Final score —', affSpecialty: 'SPECIALTY', affBelowThreshold: 'BELOW THRESHOLD',
@@ -541,8 +518,18 @@
     {key:'mouthfeel', en:'Mouthfeel', vi:'Cấu trúc'},
     {key:'overall', en:'Overall', vi:'Tổng thể'}
   ];
-  const STEPS = ATTRS.concat([{key:'uniformity', en:'Uniformity & Defects', vi:'Đồng nhất & lỗi cảm quan'}]);
-  const DESC_STEPS = [{key:'roast', en:'Roast Level', vi:'Mức rang'}].concat(ATTRS.slice(0,7));
+  const COMBINED_STEPS = [
+    {key:'roast', en:'Roast Level', vi:'Mức rang', hasDesc:true, hasAff:false},
+    {key:'fragrance', en:'Fragrance', vi:'Hương khô', hasDesc:true, hasAff:true},
+    {key:'aroma', en:'Aroma', vi:'Hương ướt', hasDesc:true, hasAff:true},
+    {key:'flavor', en:'Flavor', vi:'Hương vị', hasDesc:true, hasAff:true},
+    {key:'aftertaste', en:'Aftertaste', vi:'Hậu vị', hasDesc:true, hasAff:true},
+    {key:'acidity', en:'Acidity', vi:'Độ chua', hasDesc:true, hasAff:true},
+    {key:'sweetness', en:'Sweetness', vi:'Độ ngọt', hasDesc:true, hasAff:true},
+    {key:'mouthfeel', en:'Mouthfeel', vi:'Cấu trúc', hasDesc:true, hasAff:true},
+    {key:'overall', en:'Overall', vi:'Tổng thể', hasDesc:false, hasAff:true},
+    {key:'uniformity', en:'Uniformity & Defects', vi:'Đồng nhất & lỗi cảm quan', hasDesc:false, hasAff:false, isUniformity:true}
+  ];
   const SCALE_LABELS = [
     {n:1, en:'Extremely low', vi:'Cực kỳ thấp'}, {n:2, en:'Very low', vi:'Rất thấp'}, {n:3, en:'Moderately low', vi:'Khá thấp'},
     {n:4, en:'Slightly low', vi:'Hơi thấp'}, {n:5, en:'Neither high nor low', vi:'Trung tính'}, {n:6, en:'Slightly high', vi:'Hơi cao'},
@@ -614,8 +601,6 @@
     return {
       id: null,
       meta: { cupper:'', date:new Date().toISOString().slice(0,10), purpose:'' },
-      assessMode: 'descriptive',
-      descStep: 0,
       affective: { samples: [ makeSample('01') ], step: 0, mode:'step', reviewIndex: 0 }
     };
   }
@@ -993,131 +978,6 @@
     return `<div class="field" style="margin-top:10px;"><label>${label}</label><textarea class="desc-textarea" data-i="${i}" data-field="${field}">${escapeHtml(val)}</textarea></div>`;
   }
 
-  function renderDescStepNav(){
-    const labelEl = document.getElementById('descStepLabel'); if(!labelEl) return;
-    const step = DESC_STEPS[sessionState.descStep];
-    labelEl.textContent = t('affStepPrefix')+' '+(sessionState.descStep+1)+'/'+DESC_STEPS.length+' · '+step.en.toUpperCase();
-    const subEl = document.getElementById('descStepSub');
-    if(lang==='vi' && step.vi){ subEl.textContent = step.vi; subEl.style.display=''; } else { subEl.style.display='none'; }
-    document.getElementById('descPrevStepBtn').disabled = sessionState.descStep===0;
-    document.getElementById('descNextStepBtn').disabled = sessionState.descStep===DESC_STEPS.length-1;
-    const dotsWrap = document.getElementById('descStepDots');
-    dotsWrap.innerHTML = DESC_STEPS.map((s,i)=>`<div class="step-dot${i===sessionState.descStep?' active':''}" data-i="${i}"></div>`).join('');
-    dotsWrap.querySelectorAll('.step-dot').forEach(d=>{
-      d.addEventListener('click', ()=>{ sessionState.descStep = parseInt(d.dataset.i,10); renderDescStepNav(); renderDescStepContent(); });
-    });
-  }
-
-  function renderDescStepContent(){
-    const container = document.getElementById('descStepContent'); if(!container) return;
-    const step = DESC_STEPS[sessionState.descStep];
-    const samples = sessionState.affective.samples;
-    let html = '';
-    if(step.key === 'roast'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          <div class="field"><label>${t('descRoastLabel')}</label>
-            <select class="desc-select" data-i="${i}" data-field="roastLevel">
-              <option value="">${t('selectPlaceholder')}</option>
-              ${['Light','Medium-Light','Medium','Medium-Dark','Dark'].map(o=>`<option ${s.descriptive.roastLevel===o?'selected':''}>${o}</option>`).join('')}
-            </select>
-          </div>
-        </div>`).join('');
-    } else if(step.key==='fragrance' || step.key==='flavor'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, step.key+'Intensity', s.descriptive[step.key+'Intensity'])}
-        </div>`).join('');
-    } else if(step.key==='aroma'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, 'aromaIntensity', s.descriptive.aromaIntensity)}
-          <label class="mini-label">${t('descCataMax5')}</label>
-          ${descCataHtml(i, 'faCata', CATA_LIST, s.descriptive.faCata, 5)}
-          ${descTextareaHtml(i, 'faNotes', s.descriptive.faNotes, t('descNotesLabel'))}
-        </div>`).join('');
-    } else if(step.key==='aftertaste'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, 'aftertasteIntensity', s.descriptive.aftertasteIntensity)}
-          <label class="mini-label">${t('descRetronasalMax5')}</label>
-          ${descCataHtml(i, 'faaCata', CATA_LIST, s.descriptive.faaCata, 5)}
-          <label class="mini-label">${t('descMainTastesMax2')}</label>
-          ${descCataHtml(i, 'mainTastes', MAIN_TASTES, s.descriptive.mainTastes, 2)}
-          ${descTextareaHtml(i, 'faaNotes', s.descriptive.faaNotes, t('descNotesLabel'))}
-        </div>`).join('');
-    } else if(step.key==='acidity'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, 'acidityIntensity', s.descriptive.acidityIntensity)}
-          ${descTextareaHtml(i, 'acidityNotes', s.descriptive.acidityNotes, t('descAcidityFreeLabel'))}
-        </div>`).join('');
-    } else if(step.key==='sweetness'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, 'sweetnessIntensity', s.descriptive.sweetnessIntensity)}
-          ${descTextareaHtml(i, 'sweetnessNotes', s.descriptive.sweetnessNotes, t('descSweetnessFreeLabel'))}
-        </div>`).join('');
-    } else if(step.key==='mouthfeel'){
-      html = samples.map((s,i)=>`
-        <div class="sample-card">
-          <div class="sample-card-head">${escapeHtml(s.label)}</div>
-          ${descIntensityHtml(i, 'mouthfeelIntensity', s.descriptive.mouthfeelIntensity)}
-          <label class="mini-label">${t('descMouthfeelMax2')}</label>
-          ${descCataHtml(i, 'mouthfeelCata', MOUTHFEEL_CATA, s.descriptive.mouthfeelCata, 2)}
-          ${descTextareaHtml(i, 'mouthfeelNotes', s.descriptive.mouthfeelNotes, t('descNotesLabel'))}
-        </div>`).join('');
-    }
-    container.innerHTML = html;
-
-    container.querySelectorAll('.desc-select').forEach(sel=>{
-      sel.addEventListener('change', ()=>{
-        samples[parseInt(sel.dataset.i,10)].descriptive[sel.dataset.field] = sel.value;
-      });
-    });
-    container.querySelectorAll('.desc-slider').forEach(sl=>{
-      sl.addEventListener('input', ()=>{
-        const i = parseInt(sl.dataset.i,10), field = sl.dataset.field;
-        samples[i].descriptive[field] = parseInt(sl.value,10);
-        const valEl = document.getElementById('descval_'+i+'_'+field);
-        if(valEl) valEl.textContent = sl.value;
-      });
-    });
-    container.querySelectorAll('.desc-textarea').forEach(ta=>{
-      ta.addEventListener('input', ()=>{
-        samples[parseInt(ta.dataset.i,10)].descriptive[ta.dataset.field] = ta.value;
-      });
-    });
-    container.querySelectorAll('.desc-cata').forEach(grid=>{
-      const i = parseInt(grid.dataset.i,10), role = grid.dataset.role, max = grid.dataset.max ? parseInt(grid.dataset.max,10) : null;
-      grid.querySelectorAll('.cata-chip').forEach(chip=>{
-        chip.addEventListener('click', ()=>{
-          const arr = samples[i].descriptive[role];
-          const opt = chip.dataset.opt;
-          const idx = arr.indexOf(opt);
-          if(idx>=0){ arr.splice(idx,1); }
-          else{ if(max && arr.length>=max){ showToast(t('toastMaxChoice').replace('{max}',max)); return; } arr.push(opt); }
-          renderDescStepContent();
-        });
-      });
-    });
-  }
-
-  function setAssessMode(mode){
-    sessionState.assessMode = mode;
-    document.querySelectorAll('#assessModeToggle .mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.assessmode===mode));
-    const dw = document.getElementById('descriptiveAssessWrap'), aw = document.getElementById('affectiveAssessWrap');
-    if(dw) dw.style.display = mode==='descriptive' ? 'block':'none';
-    if(aw) aw.style.display = mode==='affective' ? 'block':'none';
-    if(mode==='descriptive'){ renderDescStepNav(); renderDescStepContent(); }
-  }
-
   // ---------- Affective: scale legend + scoreboard + step-based multi-sample entry + per-sample review ----------
   function renderScaleLegend(){
     const el = document.getElementById('scaleLegend'); if(!el) return;
@@ -1180,14 +1040,14 @@
   }
 
   function renderStepNav(){
-    const step = STEPS[sessionState.affective.step];
-    document.getElementById('stepLabel').textContent = t('affStepPrefix')+' '+(sessionState.affective.step+1)+'/'+STEPS.length+' · '+step.en.toUpperCase();
+    const step = COMBINED_STEPS[sessionState.affective.step];
+    document.getElementById('stepLabel').textContent = t('affStepPrefix')+' '+(sessionState.affective.step+1)+'/'+COMBINED_STEPS.length+' · '+step.en.toUpperCase();
     const subEl = document.getElementById('stepSub');
     if(lang==='vi' && step.vi){ subEl.textContent = step.vi; subEl.style.display=''; } else { subEl.style.display='none'; }
     document.getElementById('prevStepBtn').disabled = sessionState.affective.step===0;
-    document.getElementById('nextStepBtn').disabled = sessionState.affective.step===STEPS.length-1;
+    document.getElementById('nextStepBtn').disabled = sessionState.affective.step===COMBINED_STEPS.length-1;
     const dotsWrap = document.getElementById('stepDots');
-    dotsWrap.innerHTML = STEPS.map((s,i)=>`<div class="step-dot${i===sessionState.affective.step?' active':''}" data-i="${i}"></div>`).join('');
+    dotsWrap.innerHTML = COMBINED_STEPS.map((s,i)=>`<div class="step-dot${i===sessionState.affective.step?' active':''}" data-i="${i}"></div>`).join('');
     dotsWrap.querySelectorAll('.step-dot').forEach(d=>{
       d.addEventListener('click', ()=>{ sessionState.affective.step = parseInt(d.dataset.i,10); renderStepNav(); renderStepContent(); });
     });
@@ -1195,9 +1055,10 @@
 
   function renderStepContent(){
     const container = document.getElementById('stepContent'); if(!container) return;
-    const step = STEPS[sessionState.affective.step];
+    const step = COMBINED_STEPS[sessionState.affective.step];
     const samples = sessionState.affective.samples;
-    if(step.key === 'uniformity'){
+
+    if(step.isUniformity){
       container.innerHTML = samples.map((s,i)=>`
         <div class="sample-card">
           <div class="sample-card-head">${escapeHtml(s.label)}</div>
@@ -1229,22 +1090,83 @@
       container.querySelectorAll('textarea[data-role="notes"]').forEach(ta=>{
         ta.addEventListener('input', ()=>{ sessionState.affective.samples[parseInt(ta.dataset.i,10)].notes = ta.value; });
       });
-    } else {
-      container.innerHTML = samples.map((s,i)=>`
-        <div class="sample-rate-row">
-          <div class="sample-rate-label">${escapeHtml(s.label)}</div>
-          <div class="circle-group" data-i="${i}">${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="circle${s.ratings[step.key]===n?' active':''}" data-n="${n}">${n}</div>`).join('')}</div>
-        </div>`).join('');
-      container.querySelectorAll('.circle-group').forEach(group=>{
-        const i = parseInt(group.dataset.i,10);
-        group.querySelectorAll('.circle').forEach(c=>{
-          c.addEventListener('click', ()=>{
-            sessionState.affective.samples[i].ratings[step.key] = parseInt(c.dataset.n,10);
-            renderStepContent(); renderScoreboard(); renderReviewContent();
-          });
+      return;
+    }
+
+    container.innerHTML = samples.map((s,i)=>{
+      let inner = `<div class="sample-card"><div class="sample-card-head">${escapeHtml(s.label)}</div>`;
+      if(step.hasDesc){
+        inner += `<div class="mini-label" style="margin-top:0;">${t('descSectionLabel')}</div>`;
+        if(step.key==='roast'){
+          inner += `<div class="field"><label>${t('descRoastLabel')}</label>
+            <select class="desc-select" data-i="${i}" data-field="roastLevel">
+              <option value="">${t('selectPlaceholder')}</option>
+              ${['Light','Medium-Light','Medium','Medium-Dark','Dark'].map(o=>`<option ${s.descriptive.roastLevel===o?'selected':''}>${o}</option>`).join('')}
+            </select>
+          </div>`;
+        } else {
+          inner += descIntensityHtml(i, step.key+'Intensity', s.descriptive[step.key+'Intensity']);
+          if(step.key==='aroma'){
+            inner += `<label class="mini-label">${t('descCataMax5')}</label>${descCataHtml(i,'faCata',CATA_LIST,s.descriptive.faCata,5)}${descTextareaHtml(i,'faNotes',s.descriptive.faNotes,t('descNotesLabel'))}`;
+          } else if(step.key==='aftertaste'){
+            inner += `<label class="mini-label">${t('descRetronasalMax5')}</label>${descCataHtml(i,'faaCata',CATA_LIST,s.descriptive.faaCata,5)}<label class="mini-label">${t('descMainTastesMax2')}</label>${descCataHtml(i,'mainTastes',MAIN_TASTES,s.descriptive.mainTastes,2)}${descTextareaHtml(i,'faaNotes',s.descriptive.faaNotes,t('descNotesLabel'))}`;
+          } else if(step.key==='acidity'){
+            inner += descTextareaHtml(i,'acidityNotes',s.descriptive.acidityNotes,t('descAcidityFreeLabel'));
+          } else if(step.key==='sweetness'){
+            inner += descTextareaHtml(i,'sweetnessNotes',s.descriptive.sweetnessNotes,t('descSweetnessFreeLabel'));
+          } else if(step.key==='mouthfeel'){
+            inner += `<label class="mini-label">${t('descMouthfeelMax2')}</label>${descCataHtml(i,'mouthfeelCata',MOUTHFEEL_CATA,s.descriptive.mouthfeelCata,2)}${descTextareaHtml(i,'mouthfeelNotes',s.descriptive.mouthfeelNotes,t('descNotesLabel'))}`;
+          }
+        }
+      }
+      if(step.hasAff){
+        inner += `<div class="mini-label" style="${step.hasDesc?'':'margin-top:0;'}">${t('affSectionLabel')}</div>
+          <div class="circle-group aff-circle" data-i="${i}" data-field="${step.key}">${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="circle${s.ratings[step.key]===n?' active':''}" data-n="${n}">${n}</div>`).join('')}</div>`;
+      }
+      inner += `</div>`;
+      return inner;
+    }).join('');
+
+    container.querySelectorAll('.desc-select').forEach(sel=>{
+      sel.addEventListener('change', ()=>{
+        samples[parseInt(sel.dataset.i,10)].descriptive[sel.dataset.field] = sel.value;
+      });
+    });
+    container.querySelectorAll('.desc-slider').forEach(sl=>{
+      sl.addEventListener('input', ()=>{
+        const i = parseInt(sl.dataset.i,10), field = sl.dataset.field;
+        samples[i].descriptive[field] = parseInt(sl.value,10);
+        const valEl = document.getElementById('descval_'+i+'_'+field);
+        if(valEl) valEl.textContent = sl.value;
+      });
+    });
+    container.querySelectorAll('.desc-textarea').forEach(ta=>{
+      ta.addEventListener('input', ()=>{
+        samples[parseInt(ta.dataset.i,10)].descriptive[ta.dataset.field] = ta.value;
+      });
+    });
+    container.querySelectorAll('.desc-cata').forEach(grid=>{
+      const i = parseInt(grid.dataset.i,10), role = grid.dataset.role, max = grid.dataset.max ? parseInt(grid.dataset.max,10) : null;
+      grid.querySelectorAll('.cata-chip').forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          const arr = samples[i].descriptive[role];
+          const opt = chip.dataset.opt;
+          const idx = arr.indexOf(opt);
+          if(idx>=0){ arr.splice(idx,1); }
+          else{ if(max && arr.length>=max){ showToast(t('toastMaxChoice').replace('{max}',max)); return; } arr.push(opt); }
+          renderStepContent();
         });
       });
-    }
+    });
+    container.querySelectorAll('.aff-circle').forEach(group=>{
+      const i = parseInt(group.dataset.i,10), field = group.dataset.field;
+      group.querySelectorAll('.circle').forEach(c=>{
+        c.addEventListener('click', ()=>{
+          samples[i].ratings[field] = parseInt(c.dataset.n,10);
+          renderStepContent(); renderScoreboard(); renderReviewContent();
+        });
+      });
+    });
   }
 
   function renderReviewSampleChips(){
@@ -1401,8 +1323,6 @@
     if(sessionState.affective.step==null) sessionState.affective.step = 0;
     if(sessionState.affective.mode==null) sessionState.affective.mode = 'step';
     if(sessionState.affective.reviewIndex==null) sessionState.affective.reviewIndex = 0;
-    if(sessionState.descStep==null) sessionState.descStep = 0;
-    if(sessionState.assessMode==null) sessionState.assessMode = 'descriptive';
     sessionState.affective.samples.forEach(s=>{ if(!s.descriptive) s.descriptive = { roastLevel:'', fragranceIntensity:0, aromaIntensity:0, faCata:[], faNotes:'', flavorIntensity:0, aftertasteIntensity:0, faaCata:[], mainTastes:[], faaNotes:'', acidityIntensity:0, acidityNotes:'', sweetnessIntensity:0, sweetnessNotes:'', mouthfeelIntensity:0, mouthfeelCata:[], mouthfeelNotes:'' }; });
     renderScaleLegend();
     renderScoreboard();
@@ -1411,9 +1331,6 @@
     renderReviewSampleChips();
     renderReviewContent();
     setReviewMode(sessionState.affective.mode);
-    renderDescStepNav();
-    renderDescStepContent();
-    setAssessMode(sessionState.assessMode);
   }
 
   // ---------- Persistence: Profiles ----------
@@ -1799,10 +1716,8 @@
     document.querySelectorAll('.area-tab').forEach(tab=>{ tab.addEventListener('click', ()=> switchArea(tab.dataset.area)); });
     document.querySelectorAll('.tab').forEach(tab=>{ tab.addEventListener('click', ()=> switchTab(tab.dataset.tab)); });
     document.querySelectorAll('#modeToggle .mode-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setReviewMode(btn.dataset.mode)); });
-    document.querySelectorAll('#assessModeToggle .mode-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setAssessMode(btn.dataset.assessmode)); });
     document.querySelectorAll('.lang-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setLang(btn.dataset.lang)); });
-    wireGuideToggle('affective');
-    wireGuideToggle('descSession');
+    wireGuideToggle('combined');
     document.getElementById('legendToggle').addEventListener('click', ()=>{
       document.getElementById('legendBody').classList.toggle('open');
       document.getElementById('legendChevron').classList.toggle('open');
@@ -1811,13 +1726,7 @@
       if(sessionState.affective.step>0){ sessionState.affective.step--; renderStepNav(); renderStepContent(); }
     });
     document.getElementById('nextStepBtn').addEventListener('click', ()=>{
-      if(sessionState.affective.step<STEPS.length-1){ sessionState.affective.step++; renderStepNav(); renderStepContent(); }
-    });
-    document.getElementById('descPrevStepBtn').addEventListener('click', ()=>{
-      if(sessionState.descStep>0){ sessionState.descStep--; renderDescStepNav(); renderDescStepContent(); }
-    });
-    document.getElementById('descNextStepBtn').addEventListener('click', ()=>{
-      if(sessionState.descStep<DESC_STEPS.length-1){ sessionState.descStep++; renderDescStepNav(); renderDescStepContent(); }
+      if(sessionState.affective.step<COMBINED_STEPS.length-1){ sessionState.affective.step++; renderStepNav(); renderStepContent(); }
     });
     document.getElementById('saveProfileBtn').addEventListener('click', saveActiveProfile);
     document.getElementById('saveSessionBtn').addEventListener('click', saveSession);
