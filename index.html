@@ -244,7 +244,6 @@
     .report-line{ font-size:12px; margin-top:5px; line-height:1.5; }
   }
 </style>
-<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 
@@ -285,12 +284,10 @@
     <div class="tabbar" id="tabbar">
       <div class="tab active" data-tab="extrinsic"><span data-i18n="tabExtrinsic">THÔNG TIN MẪU</span><span class="dot"></span></div>
       <div class="tab" data-tab="physical"><span data-i18n="tabPhysical">VẬT LÝ</span><span class="dot"></span></div>
-      <div class="tab" data-tab="descriptive"><span data-i18n="tabDescriptive">MÔ TẢ</span><span class="dot"></span></div>
     </div>
 
     <div class="panel active" id="panel-extrinsic"></div>
     <div class="panel" id="panel-physical"></div>
-    <div class="panel" id="panel-descriptive"></div>
 
     <div class="actions">
       <button class="btn btn-primary" id="saveProfileBtn" data-i18n="actionsSaveProfile">Lưu hồ sơ này</button>
@@ -318,47 +315,72 @@
     </div>
 
     <div class="section">
-      <div class="guide-box">
-        <div class="guide-head" data-guide-toggle="affective">
-          <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
-          <span class="guide-chevron" id="chev_affective">▾</span>
-        </div>
-        <div class="guide-body" id="guideBody_affective"><p data-i18n="guideAffective"></p></div>
-      </div>
-      <div class="guide-box" style="border-left-color:var(--good); margin-bottom:0;">
-        <div class="guide-head" id="legendToggle">
-          <span class="label">📏 <span data-i18n="scaleLegendTitle">Thang điểm 9 mức (theo CVA)</span></span>
-          <span class="guide-chevron open" id="legendChevron">▾</span>
-        </div>
-        <div class="guide-body open" id="legendBody">
-          <div class="legend-grid" id="scaleLegend"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="mode-toggle" id="modeToggle">
-        <div class="mode-btn active" data-mode="step" data-i18n="affModeStep">Theo bước</div>
-        <div class="mode-btn" data-mode="sample" data-i18n="affModeSample">Theo mẫu</div>
+      <div class="mode-toggle" id="assessModeToggle">
+        <div class="mode-btn active" data-assessmode="descriptive" data-i18n="assessModeDescriptive">Mô tả</div>
+        <div class="mode-btn" data-assessmode="affective" data-i18n="assessModeAffective">Cảm nhận</div>
       </div>
 
-      <div id="stepModeWrap">
-        <div class="step-nav-head">
-          <button class="step-nav-btn" id="prevStepBtn">‹</button>
-          <div class="step-nav-label">
-            <div id="stepLabel">STEP 1/9 · FRAGRANCE</div>
-            <div id="stepSub" class="mini-label" style="margin:2px 0 0;">Hương khô</div>
+      <div id="descriptiveAssessWrap">
+        <div class="guide-box">
+          <div class="guide-head" data-guide-toggle="descSession">
+            <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
+            <span class="guide-chevron" id="chev_descSession">▾</span>
           </div>
-          <button class="step-nav-btn" id="nextStepBtn">›</button>
+          <div class="guide-body" id="guideBody_descSession"><p data-i18n="guideDescriptive"></p></div>
         </div>
-        <div class="step-dots" id="stepDots"></div>
-        <div id="stepContent" style="margin-top:14px;"></div>
+        <div class="step-nav-head">
+          <button class="step-nav-btn" id="descPrevStepBtn">‹</button>
+          <div class="step-nav-label">
+            <div id="descStepLabel">STEP 1/8 · ROAST LEVEL</div>
+            <div id="descStepSub" class="mini-label" style="margin:2px 0 0;">Mức rang</div>
+          </div>
+          <button class="step-nav-btn" id="descNextStepBtn">›</button>
+        </div>
+        <div class="step-dots" id="descStepDots"></div>
+        <div id="descStepContent" style="margin-top:14px;"></div>
       </div>
 
-      <div id="sampleModeWrap" style="display:none;">
-        <div class="mini-label" data-i18n="affReviewHint" style="margin-top:0;">Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc</div>
-        <div class="cata-grid" id="reviewSampleChips" style="margin-bottom:14px;"></div>
-        <div id="reviewContent"></div>
+      <div id="affectiveAssessWrap" style="display:none;">
+        <div class="guide-box">
+          <div class="guide-head" data-guide-toggle="affective">
+            <span class="label">💡 <span data-i18n="guideLabel">Hướng dẫn</span></span>
+            <span class="guide-chevron" id="chev_affective">▾</span>
+          </div>
+          <div class="guide-body" id="guideBody_affective"><p data-i18n="guideAffective"></p></div>
+        </div>
+        <div class="guide-box" style="border-left-color:var(--good); margin-bottom:0;">
+          <div class="guide-head" id="legendToggle">
+            <span class="label">📏 <span data-i18n="scaleLegendTitle">Thang điểm 9 mức (theo CVA)</span></span>
+            <span class="guide-chevron open" id="legendChevron">▾</span>
+          </div>
+          <div class="guide-body open" id="legendBody">
+            <div class="legend-grid" id="scaleLegend"></div>
+          </div>
+        </div>
+
+        <div class="mode-toggle" id="modeToggle" style="margin-top:14px;">
+          <div class="mode-btn active" data-mode="step" data-i18n="affModeStep">Theo bước</div>
+          <div class="mode-btn" data-mode="sample" data-i18n="affModeSample">Theo mẫu</div>
+        </div>
+
+        <div id="stepModeWrap">
+          <div class="step-nav-head">
+            <button class="step-nav-btn" id="prevStepBtn">‹</button>
+            <div class="step-nav-label">
+              <div id="stepLabel">STEP 1/9 · FRAGRANCE</div>
+              <div id="stepSub" class="mini-label" style="margin:2px 0 0;">Hương khô</div>
+            </div>
+            <button class="step-nav-btn" id="nextStepBtn">›</button>
+          </div>
+          <div class="step-dots" id="stepDots"></div>
+          <div id="stepContent" style="margin-top:14px;"></div>
+        </div>
+
+        <div id="sampleModeWrap" style="display:none;">
+          <div class="mini-label" data-i18n="affReviewHint" style="margin-top:0;">Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc</div>
+          <div class="cata-grid" id="reviewSampleChips" style="margin-bottom:14px;"></div>
+          <div id="reviewContent"></div>
+        </div>
       </div>
     </div>
 
@@ -429,6 +451,7 @@
       descCataMax5: 'Mô tả (tối đa 5)', descRetronasalMax5: 'Mô tả retronasal (tối đa 5)', descMainTastesMax2: 'Main Tastes (tối đa 2)', descMouthfeelMax2: 'Đặc điểm (tối đa 2)',
       descNotesLabel: 'Ghi chú', descAcidityFreeLabel: 'Mô tả tự do (juicy, tart, bright, winey...)', descSweetnessFreeLabel: 'Mô tả tự do',
       affScoreboardTitle: 'Bảng điểm phiên cupping', affAddSample: '+ Thêm mẫu vào phiên', affModeStep: 'Theo bước', affModeSample: 'Theo mẫu',
+      assessModeDescriptive: 'Mô tả', assessModeAffective: 'Cảm nhận',
       affReviewHint: 'Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc', affStepPrefix: 'BƯỚC',
       affNonUniformTitle: 'Non-Uniform Cups', affDefectiveTitle: 'Defective Cups', affNotesPh: 'Ghi chú cho mẫu này...',
       affScorePrefix: 'Final score —', affSpecialty: 'SPECIALTY', affBelowThreshold: 'DƯỚI NGƯỠNG',
@@ -476,6 +499,7 @@
       descCataMax5: 'Descriptors (up to 5)', descRetronasalMax5: 'Retronasal descriptors (up to 5)', descMainTastesMax2: 'Main Tastes (up to 2)', descMouthfeelMax2: 'Characteristics (up to 2)',
       descNotesLabel: 'Notes', descAcidityFreeLabel: 'Free descriptors (juicy, tart, bright, winey...)', descSweetnessFreeLabel: 'Free descriptors',
       affScoreboardTitle: 'Session Scoreboard', affAddSample: '+ Add sample to session', affModeStep: 'By step', affModeSample: 'By sample',
+      assessModeDescriptive: 'Descriptive', assessModeAffective: 'Affective',
       affReviewHint: 'Pick a sample to review all 8 attributes at once', affStepPrefix: 'STEP',
       affNonUniformTitle: 'Non-Uniform Cups', affDefectiveTitle: 'Defective Cups', affNotesPh: 'Notes for this sample...',
       affScorePrefix: 'Final score —', affSpecialty: 'SPECIALTY', affBelowThreshold: 'BELOW THRESHOLD',
@@ -518,6 +542,7 @@
     {key:'overall', en:'Overall', vi:'Tổng thể'}
   ];
   const STEPS = ATTRS.concat([{key:'uniformity', en:'Uniformity & Defects', vi:'Đồng nhất & lỗi cảm quan'}]);
+  const DESC_STEPS = [{key:'roast', en:'Roast Level', vi:'Mức rang'}].concat(ATTRS.slice(0,7));
   const SCALE_LABELS = [
     {n:1, en:'Extremely low', vi:'Cực kỳ thấp'}, {n:2, en:'Very low', vi:'Rất thấp'}, {n:3, en:'Moderately low', vi:'Khá thấp'},
     {n:4, en:'Slightly low', vi:'Hơi thấp'}, {n:5, en:'Neither high nor low', vi:'Trung tính'}, {n:6, en:'Slightly high', vi:'Hơi cao'},
@@ -562,24 +587,25 @@
     return (lang==='vi' && item.vi) ? item.en+' ('+item.vi+')' : item.en;
   }
 
-  function makeSample(label){
+  function makeSample(label, profileId){
     return {
       id: 'smp_' + Math.random().toString(36).slice(2,9),
+      profileId: profileId || null,
       label: label,
       ratings: Object.fromEntries(ATTRS.map(a=>[a.key,5])),
       nonUniform: [false,false,false,false,false],
       defective: [false,false,false,false,false],
       defectTypes: [],
-      notes: ''
+      notes: '',
+      descriptive: { roastLevel:'', fragranceIntensity:0, aromaIntensity:0, faCata:[], faNotes:'', flavorIntensity:0, aftertasteIntensity:0, faaCata:[], mainTastes:[], faaNotes:'', acidityIntensity:0, acidityNotes:'', sweetnessIntensity:0, sweetnessNotes:'', mouthfeelIntensity:0, mouthfeelCata:[], mouthfeelNotes:'' }
     };
   }
 
   function makeProfile(sampleNo){
     return {
-      id: null,
+      id: 'prof_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
       meta: {sampleNo: sampleNo, cupper:'', date:new Date().toISOString().slice(0,10), purpose:''},
       physical: { color:'', cat1: Object.fromEntries(CAT1_DEFECTS.map(d=>[d.key,0])), cat2: Object.fromEntries(CAT2_DEFECTS.map(d=>[d.key,0])), moisture:'', beanSize: Object.fromEntries(SIEVES.map(s=>[s,0])), notes:'' },
-      descriptive: { roastLevel:'', fragranceIntensity:0, aromaIntensity:0, faCata:[], faNotes:'', flavorIntensity:0, aftertasteIntensity:0, faaCata:[], mainTastes:[], faaNotes:'', acidityIntensity:0, acidityNotes:'', sweetnessIntensity:0, sweetnessNotes:'', mouthfeelIntensity:0, mouthfeelCata:[], mouthfeelNotes:'' },
       extrinsic: { farming:{country:'',region:'',farm:'',producer:'',species:'',variety:'',harvest:'',other:''}, processing:{processor:'',wetMill:'',dryMill:'',type:'',detail:''}, trading:{sizeGrade:'',otherGrade:'',ico:'',other:''}, certifications:{list:[], other:''} }
     };
   }
@@ -588,6 +614,8 @@
     return {
       id: null,
       meta: { cupper:'', date:new Date().toISOString().slice(0,10), purpose:'' },
+      assessMode: 'descriptive',
+      descStep: 0,
       affective: { samples: [ makeSample('01') ], step: 0, mode:'step', reviewIndex: 0 }
     };
   }
@@ -597,6 +625,7 @@
   function getActiveProfile(){ return profiles[activeProfileIndex] || profiles[0]; }
 
   let sessionState = makeSessionState();
+  sessionState.affective.samples[0].profileId = profiles[0].id;
   let currentArea = 'profiles';
   let currentTab = 'extrinsic';
 
@@ -714,49 +743,6 @@
     `;
   }
 
-  function buildDescriptivePanel(){
-    document.getElementById('panel-descriptive').innerHTML = `
-      ${guideBoxHtml('descriptive','guideDescriptive')}
-      <div class="section">
-        <div class="section-title">${t('descRoastTitle')}</div>
-        <div class="field"><label>${t('descRoastLabel')}</label>
-          <select id="roastLevel"><option value="">${t('selectPlaceholder')}</option><option>Light</option><option>Medium-Light</option><option>Medium</option><option>Medium-Dark</option><option>Dark</option></select>
-        </div>
-      </div>
-      <div class="section">
-        <div class="section-title">${t('descFATitle')}</div>
-        ${sliderField('fragranceIntensity', ATTRS[0].en, ATTRS[0].vi)}
-        ${sliderField('aromaIntensity', ATTRS[1].en, ATTRS[1].vi)}
-        <label class="mini-label">${t('descCataMax5')}</label><div class="cata-grid" id="faCata"></div>
-        <div class="field" style="margin-top:10px;"><label>${t('descNotesLabel')}</label><textarea id="faNotes"></textarea></div>
-      </div>
-      <div class="section">
-        <div class="section-title">${t('descFaaTitle')}</div>
-        ${sliderField('flavorIntensity', ATTRS[2].en, ATTRS[2].vi)}
-        ${sliderField('aftertasteIntensity', ATTRS[3].en, ATTRS[3].vi)}
-        <label class="mini-label">${t('descRetronasalMax5')}</label><div class="cata-grid" id="faaCata"></div>
-        <label class="mini-label">${t('descMainTastesMax2')}</label><div class="cata-grid" id="mainTastes"></div>
-        <div class="field" style="margin-top:10px;"><label>${t('descNotesLabel')}</label><textarea id="faaNotes"></textarea></div>
-      </div>
-      <div class="section">
-        <div class="section-title">${t('descAcidityTitle')}</div>
-        ${sliderField('acidityIntensity', ATTRS[4].en, ATTRS[4].vi)}
-        <div class="field"><label>${t('descAcidityFreeLabel')}</label><textarea id="acidityNotes"></textarea></div>
-      </div>
-      <div class="section">
-        <div class="section-title">${t('descSweetnessTitle')}</div>
-        ${sliderField('sweetnessIntensity', ATTRS[5].en, ATTRS[5].vi)}
-        <div class="field"><label>${t('descSweetnessFreeLabel')}</label><textarea id="sweetnessNotes"></textarea></div>
-      </div>
-      <div class="section">
-        <div class="section-title">${t('descMouthfeelTitle')}</div>
-        ${sliderField('mouthfeelIntensity', ATTRS[6].en, ATTRS[6].vi)}
-        <label class="mini-label">${t('descMouthfeelMax2')}</label><div class="cata-grid" id="mouthfeelCata"></div>
-        <div class="field" style="margin-top:10px;"><label>${t('descNotesLabel')}</label><textarea id="mouthfeelNotes"></textarea></div>
-      </div>
-    `;
-  }
-
   function buildExtrinsicPanel(){
     document.getElementById('panel-extrinsic').innerHTML = `
       ${guideBoxHtml('extrinsic','guideExtrinsic')}
@@ -798,8 +784,6 @@
     ['sessDate', ()=>sessionState.meta, 'date'], ['sessCupper', ()=>sessionState.meta, 'cupper'], ['sessPurpose', ()=>sessionState.meta, 'purpose']
   ];
   const PANEL_BINDINGS = [
-    ['roastLevel', ()=>getActiveProfile().descriptive, 'roastLevel'], ['faNotes', ()=>getActiveProfile().descriptive, 'faNotes'], ['faaNotes', ()=>getActiveProfile().descriptive, 'faaNotes'],
-    ['acidityNotes', ()=>getActiveProfile().descriptive, 'acidityNotes'], ['sweetnessNotes', ()=>getActiveProfile().descriptive, 'sweetnessNotes'], ['mouthfeelNotes', ()=>getActiveProfile().descriptive, 'mouthfeelNotes'],
     ['moisture', ()=>getActiveProfile().physical, 'moisture'], ['physicalNotes', ()=>getActiveProfile().physical, 'notes'],
     ['ex_country', ()=>getActiveProfile().extrinsic.farming, 'country'], ['ex_region', ()=>getActiveProfile().extrinsic.farming, 'region'], ['ex_farm', ()=>getActiveProfile().extrinsic.farming, 'farm'],
     ['ex_producer', ()=>getActiveProfile().extrinsic.farming, 'producer'], ['ex_species', ()=>getActiveProfile().extrinsic.farming, 'species'], ['ex_variety', ()=>getActiveProfile().extrinsic.farming, 'variety'],
@@ -834,31 +818,11 @@
     });
   }
 
-  const SLIDER_KEYS = ['fragranceIntensity','aromaIntensity','flavorIntensity','aftertasteIntensity','acidityIntensity','sweetnessIntensity','mouthfeelIntensity'];
-  function attachSliderListeners(){
-    SLIDER_KEYS.forEach(key=>{
-      const el = document.getElementById(key); if(!el) return;
-      el.addEventListener('input', ()=>{
-        getActiveProfile().descriptive[key] = parseInt(el.value,10);
-        document.getElementById('val_'+key).textContent = el.value;
-        updateProfileTabDots();
-      });
-    });
-  }
-  function setSliderValues(){
-    SLIDER_KEYS.forEach(key=>{
-      const el = document.getElementById(key); if(!el) return;
-      const v = getActiveProfile().descriptive[key] || 0;
-      el.value = v; document.getElementById('val_'+key).textContent = v;
-    });
-  }
-
   function attachPanelInputListeners(){
     attachPanelTextListeners();
-    attachSliderListeners();
     const sieveToggle = document.getElementById('sieveToggle');
     if(sieveToggle) sieveToggle.addEventListener('click', ()=>{ document.getElementById('sieveBody').classList.toggle('open'); });
-    wireGuideToggle('physical'); wireGuideToggle('descriptive'); wireGuideToggle('extrinsic');
+    wireGuideToggle('physical'); wireGuideToggle('extrinsic');
   }
 
   // ---------- Generic chip / stepper / sieve renderers ----------
@@ -979,7 +943,13 @@
       </div>`;
     }).join('') + `<div class="sb-add" id="addProfileBtn">${t('profileAddBtn')}</div>`;
     wrap.querySelectorAll('.sb-label').forEach(inp=>{
-      inp.addEventListener('input', ()=>{ profiles[parseInt(inp.dataset.i,10)].meta.sampleNo = inp.value; });
+      inp.addEventListener('input', ()=>{
+        const p = profiles[parseInt(inp.dataset.i,10)];
+        p.meta.sampleNo = inp.value;
+        let touched = false;
+        sessionState.affective.samples.forEach(s=>{ if(s.profileId===p.id){ s.label = inp.value; touched = true; } });
+        if(touched){ renderScoreboard(); renderReviewSampleChips(); }
+      });
     });
     wrap.querySelectorAll('.sb-score-click').forEach(el=>{
       el.addEventListener('click', ()=>{ activeProfileIndex = parseInt(el.dataset.i,10); renderProfileArea(); });
@@ -993,10 +963,159 @@
     });
     const addBtn = document.getElementById('addProfileBtn');
     if(addBtn) addBtn.addEventListener('click', ()=>{
-      profiles.push(makeProfile(String(profiles.length+1).padStart(2,'0')));
+      const label = String(profiles.length+1).padStart(2,'0');
+      const newProfile = makeProfile(label);
+      profiles.push(newProfile);
       activeProfileIndex = profiles.length-1;
+      if(!sessionState.affective.samples.some(s=>s.profileId===newProfile.id)){
+        sessionState.affective.samples.push(makeSample(label, newProfile.id));
+        renderScoreboard(); renderStepContent(); renderReviewSampleChips(); renderReviewContent();
+      }
       renderProfileArea();
     });
+  }
+
+  // ---------- Descriptive: multi-sample step-based cupping (shares samples with Affective) ----------
+  function descIntensityHtml(i, field, val){
+    return `<div class="field">
+      <div class="attr-head"><div class="attr-name">&nbsp;</div><div class="attr-val" id="descval_${i}_${field}">${val}</div></div>
+      <input type="range" class="intensity desc-slider" min="0" max="15" step="1" value="${val}" data-i="${i}" data-field="${field}">
+      <div class="slider-track-labels"><span>${t('lowLabel')}</span><span>${t('medLabel')}</span><span>${t('highLabel')}</span></div>
+    </div>`;
+  }
+  function descCataHtml(i, role, list, arr, max){
+    return `<div class="cata-grid desc-cata" data-i="${i}" data-role="${role}" data-max="${max||''}">${list.map(item=>{
+      const val = chipValue(item);
+      return `<div class="cata-chip${arr.includes(val)?' active':''}" data-opt="${escapeAttr(val)}">${chipText(item)}</div>`;
+    }).join('')}</div>`;
+  }
+  function descTextareaHtml(i, field, val, label){
+    return `<div class="field" style="margin-top:10px;"><label>${label}</label><textarea class="desc-textarea" data-i="${i}" data-field="${field}">${escapeHtml(val)}</textarea></div>`;
+  }
+
+  function renderDescStepNav(){
+    const labelEl = document.getElementById('descStepLabel'); if(!labelEl) return;
+    const step = DESC_STEPS[sessionState.descStep];
+    labelEl.textContent = t('affStepPrefix')+' '+(sessionState.descStep+1)+'/'+DESC_STEPS.length+' · '+step.en.toUpperCase();
+    const subEl = document.getElementById('descStepSub');
+    if(lang==='vi' && step.vi){ subEl.textContent = step.vi; subEl.style.display=''; } else { subEl.style.display='none'; }
+    document.getElementById('descPrevStepBtn').disabled = sessionState.descStep===0;
+    document.getElementById('descNextStepBtn').disabled = sessionState.descStep===DESC_STEPS.length-1;
+    const dotsWrap = document.getElementById('descStepDots');
+    dotsWrap.innerHTML = DESC_STEPS.map((s,i)=>`<div class="step-dot${i===sessionState.descStep?' active':''}" data-i="${i}"></div>`).join('');
+    dotsWrap.querySelectorAll('.step-dot').forEach(d=>{
+      d.addEventListener('click', ()=>{ sessionState.descStep = parseInt(d.dataset.i,10); renderDescStepNav(); renderDescStepContent(); });
+    });
+  }
+
+  function renderDescStepContent(){
+    const container = document.getElementById('descStepContent'); if(!container) return;
+    const step = DESC_STEPS[sessionState.descStep];
+    const samples = sessionState.affective.samples;
+    let html = '';
+    if(step.key === 'roast'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          <div class="field"><label>${t('descRoastLabel')}</label>
+            <select class="desc-select" data-i="${i}" data-field="roastLevel">
+              <option value="">${t('selectPlaceholder')}</option>
+              ${['Light','Medium-Light','Medium','Medium-Dark','Dark'].map(o=>`<option ${s.descriptive.roastLevel===o?'selected':''}>${o}</option>`).join('')}
+            </select>
+          </div>
+        </div>`).join('');
+    } else if(step.key==='fragrance' || step.key==='flavor'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, step.key+'Intensity', s.descriptive[step.key+'Intensity'])}
+        </div>`).join('');
+    } else if(step.key==='aroma'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, 'aromaIntensity', s.descriptive.aromaIntensity)}
+          <label class="mini-label">${t('descCataMax5')}</label>
+          ${descCataHtml(i, 'faCata', CATA_LIST, s.descriptive.faCata, 5)}
+          ${descTextareaHtml(i, 'faNotes', s.descriptive.faNotes, t('descNotesLabel'))}
+        </div>`).join('');
+    } else if(step.key==='aftertaste'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, 'aftertasteIntensity', s.descriptive.aftertasteIntensity)}
+          <label class="mini-label">${t('descRetronasalMax5')}</label>
+          ${descCataHtml(i, 'faaCata', CATA_LIST, s.descriptive.faaCata, 5)}
+          <label class="mini-label">${t('descMainTastesMax2')}</label>
+          ${descCataHtml(i, 'mainTastes', MAIN_TASTES, s.descriptive.mainTastes, 2)}
+          ${descTextareaHtml(i, 'faaNotes', s.descriptive.faaNotes, t('descNotesLabel'))}
+        </div>`).join('');
+    } else if(step.key==='acidity'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, 'acidityIntensity', s.descriptive.acidityIntensity)}
+          ${descTextareaHtml(i, 'acidityNotes', s.descriptive.acidityNotes, t('descAcidityFreeLabel'))}
+        </div>`).join('');
+    } else if(step.key==='sweetness'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, 'sweetnessIntensity', s.descriptive.sweetnessIntensity)}
+          ${descTextareaHtml(i, 'sweetnessNotes', s.descriptive.sweetnessNotes, t('descSweetnessFreeLabel'))}
+        </div>`).join('');
+    } else if(step.key==='mouthfeel'){
+      html = samples.map((s,i)=>`
+        <div class="sample-card">
+          <div class="sample-card-head">${escapeHtml(s.label)}</div>
+          ${descIntensityHtml(i, 'mouthfeelIntensity', s.descriptive.mouthfeelIntensity)}
+          <label class="mini-label">${t('descMouthfeelMax2')}</label>
+          ${descCataHtml(i, 'mouthfeelCata', MOUTHFEEL_CATA, s.descriptive.mouthfeelCata, 2)}
+          ${descTextareaHtml(i, 'mouthfeelNotes', s.descriptive.mouthfeelNotes, t('descNotesLabel'))}
+        </div>`).join('');
+    }
+    container.innerHTML = html;
+
+    container.querySelectorAll('.desc-select').forEach(sel=>{
+      sel.addEventListener('change', ()=>{
+        samples[parseInt(sel.dataset.i,10)].descriptive[sel.dataset.field] = sel.value;
+      });
+    });
+    container.querySelectorAll('.desc-slider').forEach(sl=>{
+      sl.addEventListener('input', ()=>{
+        const i = parseInt(sl.dataset.i,10), field = sl.dataset.field;
+        samples[i].descriptive[field] = parseInt(sl.value,10);
+        const valEl = document.getElementById('descval_'+i+'_'+field);
+        if(valEl) valEl.textContent = sl.value;
+      });
+    });
+    container.querySelectorAll('.desc-textarea').forEach(ta=>{
+      ta.addEventListener('input', ()=>{
+        samples[parseInt(ta.dataset.i,10)].descriptive[ta.dataset.field] = ta.value;
+      });
+    });
+    container.querySelectorAll('.desc-cata').forEach(grid=>{
+      const i = parseInt(grid.dataset.i,10), role = grid.dataset.role, max = grid.dataset.max ? parseInt(grid.dataset.max,10) : null;
+      grid.querySelectorAll('.cata-chip').forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          const arr = samples[i].descriptive[role];
+          const opt = chip.dataset.opt;
+          const idx = arr.indexOf(opt);
+          if(idx>=0){ arr.splice(idx,1); }
+          else{ if(max && arr.length>=max){ showToast(t('toastMaxChoice').replace('{max}',max)); return; } arr.push(opt); }
+          renderDescStepContent();
+        });
+      });
+    });
+  }
+
+  function setAssessMode(mode){
+    sessionState.assessMode = mode;
+    document.querySelectorAll('#assessModeToggle .mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.assessmode===mode));
+    const dw = document.getElementById('descriptiveAssessWrap'), aw = document.getElementById('affectiveAssessWrap');
+    if(dw) dw.style.display = mode==='descriptive' ? 'block':'none';
+    if(aw) aw.style.display = mode==='affective' ? 'block':'none';
+    if(mode==='descriptive'){ renderDescStepNav(); renderDescStepContent(); }
   }
 
   // ---------- Affective: scale legend + scoreboard + step-based multi-sample entry + per-sample review ----------
@@ -1027,8 +1146,13 @@
 
     wrap.querySelectorAll('.sb-label').forEach(inp=>{
       inp.addEventListener('input', ()=>{
-        sessionState.affective.samples[parseInt(inp.dataset.i,10)].label = inp.value;
+        const s = sessionState.affective.samples[parseInt(inp.dataset.i,10)];
+        s.label = inp.value;
         renderReviewSampleChips();
+        if(s.profileId){
+          const p = profiles.find(pr=>pr.id===s.profileId);
+          if(p){ p.meta.sampleNo = inp.value; renderProfileSwitcher(); }
+        }
       });
     });
     wrap.querySelectorAll('.sb-score-click').forEach(el=>{
@@ -1046,7 +1170,11 @@
     const addBtn = document.getElementById('addSampleBtn');
     if(addBtn) addBtn.addEventListener('click', ()=>{
       const n = sessionState.affective.samples.length+1;
-      sessionState.affective.samples.push(makeSample(String(n).padStart(2,'0')));
+      const label = String(n).padStart(2,'0');
+      const newProfile = makeProfile(label);
+      profiles.push(newProfile);
+      sessionState.affective.samples.push(makeSample(label, newProfile.id));
+      renderProfileSwitcher();
       renderScoreboard(); renderStepContent(); renderReviewSampleChips(); renderReviewContent();
     });
   }
@@ -1205,7 +1333,7 @@
 
   function setReviewMode(mode){
     sessionState.affective.mode = mode;
-    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
     document.getElementById('stepModeWrap').style.display = mode==='step' ? 'block':'none';
     document.getElementById('sampleModeWrap').style.display = mode==='sample' ? 'block':'none';
     if(mode==='sample'){ renderReviewSampleChips(); renderReviewContent(); }
@@ -1220,12 +1348,6 @@
     const sieveHas = SIEVES.some(s=>(p.beanSize&&p.beanSize[s])>0);
     return !!p.color || !!p.moisture || !!p.notes || cat1has || cat2has || sieveHas;
   }
-  function hasDescriptiveData(d){
-    d = d || getActiveProfile().descriptive;
-    return !!d.roastLevel || d.fragranceIntensity>0 || d.aromaIntensity>0 || d.flavorIntensity>0 || d.aftertasteIntensity>0 || d.acidityIntensity>0 || d.sweetnessIntensity>0 || d.mouthfeelIntensity>0 ||
-      (d.faCata&&d.faCata.length>0) || (d.faaCata&&d.faaCata.length>0) || (d.mainTastes&&d.mainTastes.length>0) || (d.mouthfeelCata&&d.mouthfeelCata.length>0) ||
-      !!d.faNotes || !!d.faaNotes || !!d.acidityNotes || !!d.sweetnessNotes || !!d.mouthfeelNotes;
-  }
   function hasExtrinsicData(e){
     e = e || getActiveProfile().extrinsic;
     const f=e.farming||{}, p=e.processing||{}, tr=e.trading||{}, c=e.certifications||{list:[],other:''};
@@ -1233,10 +1355,10 @@
   }
   function setDot(tab,on){ const dot = document.querySelector('.tab[data-tab="'+tab+'"] .dot'); if(dot) dot.style.display = on ? 'block':'none'; }
   function updateProfileTabDots(){
-    setDot('physical', hasPhysicalData()); setDot('descriptive', hasDescriptiveData()); setDot('extrinsic', hasExtrinsicData());
+    setDot('physical', hasPhysicalData()); setDot('extrinsic', hasExtrinsicData());
   }
 
-  // ---------- Secondary tabs (Physical/Descriptive/Extrinsic) ----------
+  // ---------- Secondary tabs (Physical/Extrinsic) ----------
   function switchTab(name){
     document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
     document.getElementById('panel-'+name).classList.add('active');
@@ -1258,20 +1380,16 @@
     document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
     document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder = t(el.dataset.i18nPh); });
   }
-  function formBadgeLetters(){ return lang==='vi' ? ['V','M','N'] : ['P','D','E']; }
+  function formBadgeLetters(){ return lang==='vi' ? ['V','T'] : ['P','E']; }
 
   // ---------- Full renders ----------
   function renderProfileArea(){
-    setProfileTextValues(); setSliderValues();
+    setProfileTextValues();
     renderColorChips();
     renderDefectGroup(document.getElementById('cat1Group'), CAT1_DEFECTS, getActiveProfile().physical.cat1);
     renderDefectGroup(document.getElementById('cat2Group'), CAT2_DEFECTS, getActiveProfile().physical.cat2);
     updatePhysicalTotals();
     renderSieveRows();
-    renderChipGroup(document.getElementById('faCata'), CATA_LIST, getActiveProfile().descriptive.faCata, 5, updateProfileTabDots);
-    renderChipGroup(document.getElementById('faaCata'), CATA_LIST, getActiveProfile().descriptive.faaCata, 5, updateProfileTabDots);
-    renderChipGroup(document.getElementById('mainTastes'), MAIN_TASTES, getActiveProfile().descriptive.mainTastes, 2, updateProfileTabDots);
-    renderChipGroup(document.getElementById('mouthfeelCata'), MOUTHFEEL_CATA, getActiveProfile().descriptive.mouthfeelCata, 2, updateProfileTabDots);
     renderProcessTypeChips();
     renderCertChips();
     renderProfileSwitcher();
@@ -1283,6 +1401,9 @@
     if(sessionState.affective.step==null) sessionState.affective.step = 0;
     if(sessionState.affective.mode==null) sessionState.affective.mode = 'step';
     if(sessionState.affective.reviewIndex==null) sessionState.affective.reviewIndex = 0;
+    if(sessionState.descStep==null) sessionState.descStep = 0;
+    if(sessionState.assessMode==null) sessionState.assessMode = 'descriptive';
+    sessionState.affective.samples.forEach(s=>{ if(!s.descriptive) s.descriptive = { roastLevel:'', fragranceIntensity:0, aromaIntensity:0, faCata:[], faNotes:'', flavorIntensity:0, aftertasteIntensity:0, faaCata:[], mainTastes:[], faaNotes:'', acidityIntensity:0, acidityNotes:'', sweetnessIntensity:0, sweetnessNotes:'', mouthfeelIntensity:0, mouthfeelCata:[], mouthfeelNotes:'' }; });
     renderScaleLegend();
     renderScoreboard();
     renderStepNav();
@@ -1290,6 +1411,9 @@
     renderReviewSampleChips();
     renderReviewContent();
     setReviewMode(sessionState.affective.mode);
+    renderDescStepNav();
+    renderDescStepContent();
+    setAssessMode(sessionState.assessMode);
   }
 
   // ---------- Persistence: Profiles ----------
@@ -1324,7 +1448,7 @@
         <div class="history-item">
           <div class="history-main" data-id="${r.id}">
             <div class="history-sample">${(r.meta&&r.meta.sampleNo)||t('historyNoName')} ${(r.meta&&r.meta.cupper)?'· '+r.meta.cupper:''}</div>
-            <div class="history-date">${(r.meta&&r.meta.date)||''} ${badge(letters[0],hasPhysicalData(r.physical))}${badge(letters[1],hasDescriptiveData(r.descriptive))}${badge(letters[2],hasExtrinsicData(r.extrinsic))}</div>
+            <div class="history-date">${(r.meta&&r.meta.date)||''} ${badge(letters[0],hasPhysicalData(r.physical))}${badge(letters[1],hasExtrinsicData(r.extrinsic))}</div>
           </div>
           <div class="history-del" data-id="${r.id}">✕</div>
         </div>`).join('');
@@ -1558,9 +1682,9 @@
       </div>
       ${buildExtrinsicReportHtml(profile.extrinsic)}
       ${buildPhysicalReportHtml(profile.physical)}
-      ${buildDescriptiveReportHtml(profile.descriptive)}
     `;
     const page2 = `
+      ${buildDescriptiveReportHtml(sample ? sample.descriptive : null)}
       ${buildAffectiveReportHtml(sample)}
       <div class="report-footer">${t('reportGenerated')} ${new Date().toLocaleString()}</div>
     `;
@@ -1619,18 +1743,29 @@
     const profile = reportCache.profiles.find(p=>p.id===pid);
     const scoreSelect = document.getElementById('reportSessionSampleSelect');
     const hintEl = document.getElementById('reportMatchHint');
-    if(!profile || !profile.meta || !(profile.meta.sampleNo||'').trim()){
-      if(hintEl) hintEl.textContent = '';
-      return;
-    }
-    const target = profile.meta.sampleNo.trim().toLowerCase();
+    if(!profile){ if(hintEl) hintEl.textContent = ''; return; }
+    // Pass 1: exact profileId link (most reliable, survives renames)
     for(const sess of reportCache.sessions){
       const samples = (sess.affective && sess.affective.samples) || [];
       for(let idx=0; idx<samples.length; idx++){
-        if((samples[idx].label||'').trim().toLowerCase() === target){
+        if(samples[idx].profileId && samples[idx].profileId===profile.id){
           scoreSelect.value = sess.id+'::'+idx;
-          if(hintEl) hintEl.textContent = t('reportAutoMatched').replace('{name}', profile.meta.sampleNo);
+          if(hintEl) hintEl.textContent = t('reportAutoMatched').replace('{name}', profile.meta.sampleNo||samples[idx].label);
           return;
+        }
+      }
+    }
+    // Pass 2: fallback to matching by sample name text (for samples created before linking existed)
+    const target = (profile.meta.sampleNo||'').trim().toLowerCase();
+    if(target){
+      for(const sess of reportCache.sessions){
+        const samples = (sess.affective && sess.affective.samples) || [];
+        for(let idx=0; idx<samples.length; idx++){
+          if((samples[idx].label||'').trim().toLowerCase() === target){
+            scoreSelect.value = sess.id+'::'+idx;
+            if(hintEl) hintEl.textContent = t('reportAutoMatched').replace('{name}', profile.meta.sampleNo);
+            return;
+          }
         }
       }
     }
@@ -1650,7 +1785,7 @@
     lang = newLang;
     document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
     applyI18nStatic();
-    buildPhysicalPanel(); buildDescriptivePanel(); buildExtrinsicPanel();
+    buildPhysicalPanel(); buildExtrinsicPanel();
     attachPanelInputListeners();
     renderProfileArea();
     renderCuppingArea();
@@ -1663,9 +1798,11 @@
   function attachShellListeners(){
     document.querySelectorAll('.area-tab').forEach(tab=>{ tab.addEventListener('click', ()=> switchArea(tab.dataset.area)); });
     document.querySelectorAll('.tab').forEach(tab=>{ tab.addEventListener('click', ()=> switchTab(tab.dataset.tab)); });
-    document.querySelectorAll('.mode-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setReviewMode(btn.dataset.mode)); });
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setReviewMode(btn.dataset.mode)); });
+    document.querySelectorAll('#assessModeToggle .mode-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setAssessMode(btn.dataset.assessmode)); });
     document.querySelectorAll('.lang-btn').forEach(btn=>{ btn.addEventListener('click', ()=> setLang(btn.dataset.lang)); });
     wireGuideToggle('affective');
+    wireGuideToggle('descSession');
     document.getElementById('legendToggle').addEventListener('click', ()=>{
       document.getElementById('legendBody').classList.toggle('open');
       document.getElementById('legendChevron').classList.toggle('open');
@@ -1675,6 +1812,12 @@
     });
     document.getElementById('nextStepBtn').addEventListener('click', ()=>{
       if(sessionState.affective.step<STEPS.length-1){ sessionState.affective.step++; renderStepNav(); renderStepContent(); }
+    });
+    document.getElementById('descPrevStepBtn').addEventListener('click', ()=>{
+      if(sessionState.descStep>0){ sessionState.descStep--; renderDescStepNav(); renderDescStepContent(); }
+    });
+    document.getElementById('descNextStepBtn').addEventListener('click', ()=>{
+      if(sessionState.descStep<DESC_STEPS.length-1){ sessionState.descStep++; renderDescStepNav(); renderDescStepContent(); }
     });
     document.getElementById('saveProfileBtn').addEventListener('click', saveActiveProfile);
     document.getElementById('saveSessionBtn').addEventListener('click', saveSession);
@@ -1698,7 +1841,6 @@
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
   applyI18nStatic();
   buildPhysicalPanel();
-  buildDescriptivePanel();
   buildExtrinsicPanel();
   attachAllTextListeners();
   attachPanelInputListeners();
@@ -1710,6 +1852,5 @@
 })();
 </script>
 
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js')}</script>
 </body>
 </html>
