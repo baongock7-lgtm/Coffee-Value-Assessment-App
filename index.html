@@ -1095,8 +1095,12 @@
 
     container.innerHTML = samples.map((s,i)=>{
       let inner = `<div class="sample-card"><div class="sample-card-head">${escapeHtml(s.label)}</div>`;
+      if(step.hasAff){
+        inner += `<div class="mini-label" style="margin-top:0;">${t('affSectionLabel')}</div>
+          <div class="circle-group aff-circle" data-i="${i}" data-field="${step.key}">${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="circle${s.ratings[step.key]===n?' active':''}" data-n="${n}">${n}</div>`).join('')}</div>`;
+      }
       if(step.hasDesc){
-        inner += `<div class="mini-label" style="margin-top:0;">${t('descSectionLabel')}</div>`;
+        inner += `<div class="mini-label" style="${step.hasAff?'':'margin-top:0;'}">${t('descSectionLabel')}</div>`;
         if(step.key==='roast'){
           inner += `<div class="field"><label>${t('descRoastLabel')}</label>
             <select class="desc-select" data-i="${i}" data-field="roastLevel">
@@ -1106,9 +1110,9 @@
           </div>`;
         } else {
           inner += descIntensityHtml(i, step.key+'Intensity', s.descriptive[step.key+'Intensity']);
-          if(step.key==='aroma'){
+          if(step.key==='fragrance' || step.key==='aroma'){
             inner += `<label class="mini-label">${t('descCataMax5')}</label>${descCataHtml(i,'faCata',CATA_LIST,s.descriptive.faCata,5)}${descTextareaHtml(i,'faNotes',s.descriptive.faNotes,t('descNotesLabel'))}`;
-          } else if(step.key==='aftertaste'){
+          } else if(step.key==='flavor' || step.key==='aftertaste'){
             inner += `<label class="mini-label">${t('descRetronasalMax5')}</label>${descCataHtml(i,'faaCata',CATA_LIST,s.descriptive.faaCata,5)}<label class="mini-label">${t('descMainTastesMax2')}</label>${descCataHtml(i,'mainTastes',MAIN_TASTES,s.descriptive.mainTastes,2)}${descTextareaHtml(i,'faaNotes',s.descriptive.faaNotes,t('descNotesLabel'))}`;
           } else if(step.key==='acidity'){
             inner += descTextareaHtml(i,'acidityNotes',s.descriptive.acidityNotes,t('descAcidityFreeLabel'));
@@ -1118,10 +1122,6 @@
             inner += `<label class="mini-label">${t('descMouthfeelMax2')}</label>${descCataHtml(i,'mouthfeelCata',MOUTHFEEL_CATA,s.descriptive.mouthfeelCata,2)}${descTextareaHtml(i,'mouthfeelNotes',s.descriptive.mouthfeelNotes,t('descNotesLabel'))}`;
           }
         }
-      }
-      if(step.hasAff){
-        inner += `<div class="mini-label" style="${step.hasDesc?'':'margin-top:0;'}">${t('affSectionLabel')}</div>
-          <div class="circle-group aff-circle" data-i="${i}" data-field="${step.key}">${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="circle${s.ratings[step.key]===n?' active':''}" data-n="${n}">${n}</div>`).join('')}</div>`;
       }
       inner += `</div>`;
       return inner;
