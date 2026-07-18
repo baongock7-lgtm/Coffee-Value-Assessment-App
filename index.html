@@ -1194,7 +1194,14 @@
       const i = parseInt(group.dataset.i,10), field = group.dataset.field;
       group.querySelectorAll('.circle').forEach(c=>{
         c.addEventListener('click', ()=>{
-          samples[i].ratings[field] = parseInt(c.dataset.n,10);
+          const val = parseInt(c.dataset.n,10);
+          samples[i].ratings[field] = val;
+          if(step.hasDesc && field!=='roast'){
+            const intField = field+'Intensity';
+            if(samples[i].descriptive[intField]===0){
+              samples[i].descriptive[intField] = Math.round((val-1)/8*15);
+            }
+          }
           renderStepContent(); renderScoreboard(); renderReviewContent();
         });
       });
