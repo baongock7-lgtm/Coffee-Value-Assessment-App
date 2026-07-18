@@ -403,8 +403,8 @@
     vi: {
       topbarSub: '4 form · SCA Coffee Value Assessment',
       areaProfiles: 'Hồ sơ mẫu', areaCupping: 'Thử nếm', areaReport: 'Báo cáo',
-      metaDate: 'Ngày', metaCupper: 'Người chấm / Cupper', metaCupperPh: 'Tên của bạn',
-      metaPurpose: 'Mục đích / Purpose', metaPurposePh: 'VD: Kiểm định lô hàng, QC...',
+      metaDate: 'Ngày', metaCupper: 'Người chấm', metaCupperPh: 'Tên của bạn',
+      metaPurpose: 'Mục đích', metaPurposePh: 'VD: Kiểm định lô hàng, QC...',
       tabPhysical: 'VẬT LÝ', tabDescriptive: 'MÔ TẢ', tabExtrinsic: 'THÔNG TIN MẪU',
       profileSwitcherTitle: 'Danh sách hồ sơ mẫu', profileAddBtn: '+ Thêm hồ sơ mẫu mới', profileSamplePh: 'Tên/Số mẫu',
       actionsSaveProfile: 'Lưu hồ sơ này', profileHistoryTitle: 'Lịch sử hồ sơ mẫu', profileEmptyHistory: 'Chưa có hồ sơ nào được lưu.',
@@ -429,22 +429,24 @@
       descNotesLabel: 'Ghi chú', descAcidityFreeLabel: 'Mô tả tự do (juicy, tart, bright, winey...)', descSweetnessFreeLabel: 'Mô tả tự do',
       affScoreboardTitle: 'Bảng điểm phiên cupping', affAddSample: '+ Thêm mẫu vào phiên', affModeStep: 'Theo bước', affModeSample: 'Theo mẫu',
       affReviewHint: 'Chọn mẫu để rà lại toàn bộ 8 mục cùng lúc', affStepPrefix: 'BƯỚC',
-      affNonUniformTitle: 'Non-Uniform Cups', affDefectiveTitle: 'Defective Cups', affNotesPh: 'Ghi chú cho mẫu này...',
+      affNonUniformTitle: 'Tách không đồng nhất', affDefectiveTitle: 'Tách lỗi', affNotesPh: 'Ghi chú cho mẫu này...',
       affScorePrefix: 'Final score —', affSpecialty: 'SPECIALTY', affBelowThreshold: 'DƯỚI NGƯỠNG',
       affRawLabel: 'Raw', affNonUniformCountLabel: 'Không đồng nhất', affDefectiveCountLabel: 'Cốc lỗi', affNoSamples: 'Chưa có mẫu nào trong phiên.', affSamplePh: 'Tên mẫu',
-      extFarmingTitle: 'Farming', extCountry: 'Country', extRegion: 'Region', extFarm: 'Farm / Co-op', extProducer: 'Producer(s)',
-      extSpecies: 'Species', extVariety: 'Variety', extHarvest: 'Harvest date/year', extFarmingOtherLabel: 'Khác', extFarmingOtherPh: 'Altitude, GPS, pruning, shading...',
-      extProcessingTitle: 'Processing', extProcessor: 'Processor(s)', extWetMill: 'Wet Mill / Station', extDryMill: 'Dry Mill', extProcessTypeLabel: 'Process Type',
-      extProcessOtherLabel: 'Chi tiết lên men / fermentation', extProcessOtherPh: 'VD: Anaerobic, carbonic maceration, co-fermentation...',
-      extTradingTitle: 'Trading', extSizeGrade: 'Size Grade', extSizeGradePh: 'AA, Supremo...', extOtherGrade: 'Other Grade', extOtherGradePh: 'SHB, SHG, EP...',
-      extIco: 'ICO Number', extTradingOtherLabel: 'Khác', extTradingOtherPh: 'Trading model, farmgate price, FOB, premium...',
-      extCertTitle: 'Certifications', extCertOtherLabel: 'Khác', extCertOtherPh: 'SMBC Bird Friendly, Nespresso AAA...',
+      extFarmingTitle: 'Canh tác', extCountry: 'Quốc gia', extRegion: 'Vùng', extFarm: 'Tên Nông trại / Hợp tác xã', extProducer: 'Tên nhà sản xuất',
+      extSpecies: 'Giống loài (chủng)', extVariety: 'Giống cà phê', extHarvest: 'Ngày/Năm thu hoạch', extFarmingOtherLabel: 'Khác', extFarmingOtherPh: 'Độ cao, GPS, tỉa cành, che bóng...',
+      extProcessingTitle: 'Chế biến', extProcessor: 'Tên đơn vị chế biến', extWetMill: 'Trạm/Xưởng sơ chế ướt', extDryMill: 'Xưởng sơ chế khô', extProcessTypeLabel: 'Phương pháp chế biến',
+      extProcessOtherLabel: 'Chi tiết lên men', extProcessOtherPh: 'VD: Anaerobic, carbonic maceration, co-fermentation...',
+      extTradingTitle: 'Thương mại', extSizeGrade: 'Cấp độ kích cỡ (sàng lọc)', extSizeGradePh: 'AA, Supremo...', extOtherGrade: 'Cấp độ khác', extOtherGradePh: 'SHB, SHG, EP...',
+      extIco: 'Số ICO', extTradingOtherLabel: 'Khác', extTradingOtherPh: 'Mô hình giao dịch, giá tại vườn, FOB, phí premium...',
+      extCertTitle: 'Chứng nhận', extCertOtherLabel: 'Khác', extCertOtherPh: 'SMBC Bird Friendly, Nespresso AAA...',
       actionsNew: 'Phiên mới', actionsSave: 'Lưu phiên này', historyEmpty: 'Chưa có phiên nào được lưu.',
       historyLoadError: 'Không tải được lịch sử.', historyNoName: 'Không tên', sessionHistoryTitle: 'Lịch sử phiên cupping',
-      reportPickProfileLabel: 'Chọn hồ sơ mẫu', reportPickScoreLabel: 'Gắn điểm Cupping (tuỳ chọn)', reportNoScore: '— Không gắn điểm —',
+      reportPickProfileLabel: 'Chọn hồ sơ mẫu (tuỳ chọn)', reportPickScoreLabel: 'Gắn điểm Cupping (tuỳ chọn)', reportNoScore: '— Không gắn điểm —',
       reportAutoMatched: '✓ Tự động khớp điểm cupping theo tên mẫu "{name}"', reportNoAutoMatch: 'Không tìm thấy điểm cupping trùng tên mẫu — chọn thủ công ở trên nếu có.',
-      reportNoProfileOpt: '— Chọn hồ sơ —', reportExportBtn: '🖨️ Xuất PDF / In', reportEmptyHint: 'Chọn một hồ sơ mẫu để xem trước báo cáo.',
+      reportNoProfileOpt: '— Chọn hồ sơ —', reportExportBtn: '🖨️ Xuất PDF / In', reportEmptyHint: 'Chọn hồ sơ mẫu hoặc gắn điểm cupping (hoặc cả hai) để xem trước báo cáo.',
       reportGenerated: 'Xuất lúc',
+      reportColSection: 'Mục', reportColScore: 'Điểm', reportColIntensity: 'Cường độ', reportColDescriptors: 'Mô tả hương vị',
+      reportColScreen: 'Sàng', reportColWeight: 'Khối lượng', descMainTastesLabel: 'Vị chính',
       toastMaxChoice: 'Tối đa {max} lựa chọn', toastSaveFail: 'Lưu thất bại, thử lại.', toastSaved: 'Đã lưu {n} mẫu trong phiên này',
       toastSaveError: 'Lỗi khi lưu.', toastNewSession: 'Đã tạo phiên mới', toastLoaded: 'Đã tải phiên #{id}', toastDeleteError: 'Không thể xoá.',
       toastProfileSaved: 'Đã lưu hồ sơ #{n}', toastProfileLoaded: 'Đã mở hồ sơ #{id}'
@@ -490,10 +492,12 @@
       extCertTitle: 'Certifications', extCertOtherLabel: 'Other', extCertOtherPh: 'SMBC Bird Friendly, Nespresso AAA...',
       actionsNew: 'New session', actionsSave: 'Save this session', historyEmpty: 'No sessions saved yet.',
       historyLoadError: 'Could not load history.', historyNoName: 'Untitled', sessionHistoryTitle: 'Cupping Session History',
-      reportPickProfileLabel: 'Select sample profile', reportPickScoreLabel: 'Attach cupping score (optional)', reportNoScore: '— No score —',
+      reportPickProfileLabel: 'Select sample profile (optional)', reportPickScoreLabel: 'Attach cupping score (optional)', reportNoScore: '— No score —',
       reportAutoMatched: '✓ Auto-matched cupping score by sample name "{name}"', reportNoAutoMatch: 'No cupping score found matching this sample name — pick one manually above if available.',
-      reportNoProfileOpt: '— Select profile —', reportExportBtn: '🖨️ Export PDF / Print', reportEmptyHint: 'Select a sample profile to preview the report.',
+      reportNoProfileOpt: '— Select profile —', reportExportBtn: '🖨️ Export PDF / Print', reportEmptyHint: 'Select a sample profile or attach a cupping score (or both) to preview the report.',
       reportGenerated: 'Generated',
+      reportColSection: 'Section', reportColScore: 'Score', reportColIntensity: 'Intensity', reportColDescriptors: 'Descriptors',
+      reportColScreen: 'Screen', reportColWeight: 'Weight', descMainTastesLabel: 'Main Tastes',
       toastMaxChoice: 'Up to {max} choices', toastSaveFail: 'Save failed, please try again.', toastSaved: 'Saved {n} sample(s) in this session',
       toastSaveError: 'Error while saving.', toastNewSession: 'New session created', toastLoaded: 'Loaded session #{id}', toastDeleteError: 'Could not delete.',
       toastProfileSaved: 'Saved profile #{n}', toastProfileLoaded: 'Opened profile #{id}'
@@ -513,65 +517,72 @@
     {key:'aroma', en:'Aroma', vi:'Hương ướt'},
     {key:'flavor', en:'Flavor', vi:'Hương vị'},
     {key:'aftertaste', en:'Aftertaste', vi:'Hậu vị'},
-    {key:'acidity', en:'Acidity', vi:'Độ chua'},
+    {key:'acidity', en:'Acidity', vi:'Vị chua'},
     {key:'sweetness', en:'Sweetness', vi:'Độ ngọt'},
-    {key:'mouthfeel', en:'Mouthfeel', vi:'Cấu trúc'},
+    {key:'mouthfeel', en:'Mouthfeel', vi:'Cảm giác trong miệng'},
     {key:'overall', en:'Overall', vi:'Tổng thể'}
   ];
   const COMBINED_STEPS = [
-    {key:'roast', en:'Roast Level', vi:'Mức rang', hasDesc:true, hasAff:false},
+    {key:'roast', en:'Roast Level', vi:'Mức độ rang', hasDesc:true, hasAff:false},
     {key:'fragrance', en:'Fragrance', vi:'Hương khô', hasDesc:true, hasAff:true},
     {key:'aroma', en:'Aroma', vi:'Hương ướt', hasDesc:true, hasAff:true},
     {key:'flavor', en:'Flavor', vi:'Hương vị', hasDesc:true, hasAff:true},
     {key:'aftertaste', en:'Aftertaste', vi:'Hậu vị', hasDesc:true, hasAff:true},
-    {key:'acidity', en:'Acidity', vi:'Độ chua', hasDesc:true, hasAff:true},
+    {key:'acidity', en:'Acidity', vi:'Vị chua', hasDesc:true, hasAff:true},
     {key:'sweetness', en:'Sweetness', vi:'Độ ngọt', hasDesc:true, hasAff:true},
-    {key:'mouthfeel', en:'Mouthfeel', vi:'Cấu trúc', hasDesc:true, hasAff:true},
+    {key:'mouthfeel', en:'Mouthfeel', vi:'Cảm giác trong miệng', hasDesc:true, hasAff:true},
     {key:'overall', en:'Overall', vi:'Tổng thể', hasDesc:false, hasAff:true},
     {key:'uniformity', en:'Uniformity & Defects', vi:'Đồng nhất & lỗi cảm quan', hasDesc:false, hasAff:false, isUniformity:true}
   ];
   const SCALE_LABELS = [
-    {n:1, en:'Extremely low', vi:'Cực kỳ thấp'}, {n:2, en:'Very low', vi:'Rất thấp'}, {n:3, en:'Moderately low', vi:'Khá thấp'},
-    {n:4, en:'Slightly low', vi:'Hơi thấp'}, {n:5, en:'Neither high nor low', vi:'Trung tính'}, {n:6, en:'Slightly high', vi:'Hơi cao'},
-    {n:7, en:'Moderately high', vi:'Khá cao'}, {n:8, en:'Very high', vi:'Rất cao'}, {n:9, en:'Extremely high', vi:'Cực kỳ cao'}
+    {n:1, en:'Extremely low', vi:'Cực thấp'}, {n:2, en:'Very low', vi:'Rất thấp'}, {n:3, en:'Moderately low', vi:'Hơi thấp (thấp vừa phải)'},
+    {n:4, en:'Slightly low', vi:'Hơi thấp nhẹ'}, {n:5, en:'Neither high nor low', vi:'Không cao không thấp'}, {n:6, en:'Slightly high', vi:'Hơi cao nhẹ'},
+    {n:7, en:'Moderately high', vi:'Cao vừa phải'}, {n:8, en:'Very high', vi:'Rất cao'}, {n:9, en:'Extremely high', vi:'Cực cao'}
   ];
   const CATA_LIST = [
-    {en:'Floral', vi:'Hoa'}, {en:'Fruity', vi:'Trái cây'}, {en:'Berry', vi:'Quả mọng'}, {en:'Dried Fruit', vi:'Trái cây khô'}, {en:'Citrus Fruit', vi:'Cam chanh'},
+    {en:'Floral', vi:'Hoa'}, {en:'Fruity', vi:'Trái cây'}, {en:'Berry', vi:'Quả mọng'}, {en:'Dried Fruit', vi:'Trái cây khô'}, {en:'Citrus Fruit', vi:'Trái cây có múi'},
     {en:'Sour/Fermented', vi:'Chua/Lên men'}, {en:'Sour', vi:'Chua'}, {en:'Fermented', vi:'Lên men'}, {en:'Green/Vegetative', vi:'Xanh/Thực vật'}, {en:'Other', vi:'Khác'},
-    {en:'Chemical', vi:'Hóa chất'}, {en:'Musty/Earthy', vi:'Mốc/Đất'}, {en:'Woody', vi:'Gỗ'}, {en:'Roasted', vi:'Rang cháy'}, {en:'Cereal', vi:'Ngũ cốc'},
-    {en:'Burnt', vi:'Khét'}, {en:'Tobacco', vi:'Thuốc lá'}, {en:'Nutty/Cocoa', vi:'Hạt/Cacao'}, {en:'Nutty', vi:'Hạt (nuts)'}, {en:'Cocoa', vi:'Cacao'},
-    {en:'Spice', vi:'Gia vị'}, {en:'Sweet', vi:'Ngọt'}, {en:'Vanilla/Vanillin', vi:'Vani'}, {en:'Brown Sugar', vi:'Đường nâu'}
+    {en:'Chemical', vi:'Hóa chất'}, {en:'Musty/Earthy', vi:'Mốc/Đất'}, {en:'Woody', vi:'Gỗ'}, {en:'Roasted', vi:'Rang'}, {en:'Cereal', vi:'Ngũ cốc'},
+    {en:'Burnt', vi:'Cháy khét'}, {en:'Tobacco', vi:'Thuốc lá'}, {en:'Nutty/Cocoa', vi:'Hạt/Cacao'}, {en:'Nutty', vi:'Các loại hạt'}, {en:'Cocoa', vi:'Cacao'},
+    {en:'Spice', vi:'Gia vị'}, {en:'Sweet', vi:'Ngọt'}, {en:'Vanilla/Vanillin', vi:'Vani/Vanillin'}, {en:'Brown Sugar', vi:'Đường nâu'}
   ];
-  const MAIN_TASTES = [{en:'Salty', vi:'Mặn'}, {en:'Sour', vi:'Chua'}, {en:'Sweet', vi:'Ngọt'}, {en:'Bitter', vi:'Đắng'}, {en:'Umami', vi:''}];
+  const MAIN_TASTES = [{en:'Salty', vi:'Mặn'}, {en:'Sour', vi:'Chua'}, {en:'Sweet', vi:'Ngọt'}, {en:'Bitter', vi:'Đắng'}, {en:'Umami', vi:'Umami (vị ngọt thịt)'}];
   const MOUTHFEEL_CATA = [
-    {en:'Rough (Gritty, Chalky, Sandy)', vi:'Nhám (Sạn, Phấn, Cát)'}, {en:'Oily', vi:'Dầu'},
-    {en:'Smooth (Velvety, Silky, Syrupy)', vi:'Mượt (Nhung, Lụa, Siro)'}, {en:'Mouth-Drying', vi:'Se miệng'}, {en:'Metallic', vi:'Kim loại'}
+    {en:'Rough (Gritty, Chalky, Sandy)', vi:'Thô ráp (Sạn, Phấn, Cát)'}, {en:'Oily', vi:'Dầu'},
+    {en:'Smooth (Velvety, Silky, Syrupy)', vi:'Mượt (Nhung, Lụa, Sánh như siro)'}, {en:'Mouth-Drying', vi:'Gây khô miệng (chát)'}, {en:'Metallic', vi:'Kim loại'}
   ];
   const COLOR_OPTIONS = [
-    {en:'Blue Green', vi:'Xanh lam'}, {en:'Bluish-Green', vi:'Xanh lam nhạt'}, {en:'Green', vi:'Xanh lá'}, {en:'Greenish', vi:'Hơi xanh'},
-    {en:'Yellow-Green', vi:'Vàng xanh'}, {en:'Pale Yellow', vi:'Vàng nhạt'}, {en:'Yellowish', vi:'Hơi vàng'}, {en:'Brownish', vi:'Hơi nâu'}
+    {en:'Blue Green', vi:'Xanh lam-lục'}, {en:'Bluish-Green', vi:'Xanh lục ánh lam'}, {en:'Green', vi:'Xanh lục'}, {en:'Greenish', vi:'Hơi xanh lục'},
+    {en:'Yellow-Green', vi:'Vàng-xanh lục'}, {en:'Pale Yellow', vi:'Vàng nhạt'}, {en:'Yellowish', vi:'Hơi vàng'}, {en:'Brownish', vi:'Hơi nâu'}
   ];
-  const DEFECT_TYPES = [{en:'Moldy', vi:'Mốc'}, {en:'Phenolic', vi:''}, {en:'Potato', vi:'Khoai tây'}];
-  const PROCESS_TYPES = [{en:'Washed', vi:'Chế biến ướt'}, {en:'Natural', vi:'Chế biến khô (tự nhiên)'}, {en:'Other', vi:''}];
+  const DEFECT_TYPES = [{en:'Moldy', vi:'Mốc'}, {en:'Phenolic', vi:'Phenolic (mùi thuốc/nhựa)'}, {en:'Potato', vi:'Mùi khoai tây'}];
+  const PROCESS_TYPES = [{en:'Washed', vi:'Chế biến ướt (rửa)'}, {en:'Natural', vi:'Chế biến tự nhiên (khô)'}, {en:'Other', vi:'Khác'}];
   const CAT1_DEFECTS = [
     {key:'fullBlack', en:'Full Black', vi:'Đen toàn phần', ratio:1}, {key:'fullSour', en:'Full Sour', vi:'Chua toàn phần', ratio:1},
-    {key:'driedCherry', en:'Dried Cherry / Pod', vi:'Quả khô / Vỏ trấu', ratio:1}, {key:'fungusDamaged', en:'Fungus Damaged', vi:'Hư nấm mốc', ratio:1},
-    {key:'foreignMatter', en:'Foreign Matter', vi:'Tạp chất', ratio:1}, {key:'severeInsect', en:'Severe Insect Damage', vi:'Sâu hại nặng', ratio:5}
+    {key:'driedCherry', en:'Dried Cherry / Pod', vi:'Quả khô nguyên vỏ', ratio:1}, {key:'fungusDamaged', en:'Fungus Damaged', vi:'Hư hại do nấm', ratio:1},
+    {key:'foreignMatter', en:'Foreign Matter', vi:'Tạp chất', ratio:1}, {key:'severeInsect', en:'Severe Insect Damage', vi:'Hư hại nặng do côn trùng', ratio:5}
   ];
   const CAT2_DEFECTS = [
     {key:'partialBlack', en:'Partial Black', vi:'Đen một phần', ratio:3}, {key:'partialSour', en:'Partial Sour', vi:'Chua một phần', ratio:3},
-    {key:'parchment', en:'Parchment / Pergamino', vi:'Vỏ trấu (parchment)', ratio:5}, {key:'floater', en:'Floater', vi:'Hạt nổi', ratio:5},
-    {key:'immature', en:'Immature / Unripe', vi:'Chưa chín', ratio:5}, {key:'withered', en:'Withered', vi:'Hạt héo', ratio:5},
-    {key:'shell', en:'Shell', vi:'Vỏ kẹp (shell)', ratio:5}, {key:'broken', en:'Broken / Chipped / Cut', vi:'Vỡ / Sứt / Đứt', ratio:5},
-    {key:'hullHusk', en:'Hull / Husk', vi:'Vỏ lụa / vỏ trấu', ratio:5}, {key:'slightInsect', en:'Slight Insect Damage', vi:'Sâu hại nhẹ', ratio:10}
+    {key:'parchment', en:'Parchment / Pergamino', vi:'Vỏ trấu còn sót', ratio:5}, {key:'floater', en:'Floater', vi:'Hạt nổi', ratio:5},
+    {key:'immature', en:'Immature / Unripe', vi:'Hạt non/chưa chín', ratio:5}, {key:'withered', en:'Withered', vi:'Hạt héo', ratio:5},
+    {key:'shell', en:'Shell', vi:'Hạt vỏ trấu lép', ratio:5}, {key:'broken', en:'Broken / Chipped / Cut', vi:'Vỡ/Sứt/Cắt', ratio:5},
+    {key:'hullHusk', en:'Hull / Husk', vi:'Vỏ lụa/vỏ trấu', ratio:5}, {key:'slightInsect', en:'Slight Insect Damage', vi:'Hư hại nhẹ do côn trùng', ratio:10}
   ];
   const SIEVES = ['13','14','15','16','17','18','19'];
-  const CERTIFICATIONS = ['4C','Fair Trade','Organic','Rainforest Alliance'];
+  const CERTIFICATIONS = [
+    {en:'4C', vi:'4C'}, {en:'Fair Trade', vi:'Thương mại Công bằng'}, {en:'Organic', vi:'Hữu cơ'}, {en:'Rainforest Alliance', vi:'Liên minh Rừng mưa'}
+  ];
 
   function chipValue(item){ return typeof item==='string' ? item : item.en; }
   function chipText(item){
     if(typeof item==='string') return item;
-    return (lang==='vi' && item.vi) ? item.en+' ('+item.vi+')' : item.en;
+    if(lang==='vi' && item.vi) return item.vi;
+    return item.en;
+  }
+  function localizedLabel(canonicalEn, list){
+    const item = list.find(it => chipValue(it)===canonicalEn);
+    return item ? chipText(item) : canonicalEn;
   }
 
   function makeSample(label, profileId){
@@ -871,7 +882,7 @@
     if(!container) return;
     container.innerHTML = list.map(d => `
       <div class="stepper-row">
-        <div class="stepper-label"><div class="name">${d.en}${lang==='vi'&&d.vi?' · '+d.vi:''}</div><div class="ratio">${d.ratio}:1</div></div>
+        <div class="stepper-label"><div class="name">${chipText(d)}</div><div class="ratio">${d.ratio}:1</div></div>
         <div class="stepper-ctrl"><div class="stepper-btn" data-act="dec" data-key="${d.key}">−</div><div class="stepper-val" id="sv_${d.key}">${stateObj[d.key]}</div><div class="stepper-btn" data-act="inc" data-key="${d.key}">+</div></div>
         <div class="stepper-eq" id="eq_${d.key}">= ${Math.floor(stateObj[d.key]/d.ratio)}</div>
       </div>`).join('');
@@ -941,8 +952,18 @@
     });
     wrap.querySelectorAll('.sb-del').forEach(btn=>{
       btn.addEventListener('click', ()=>{
-        profiles.splice(parseInt(btn.dataset.i,10),1);
+        const idx = parseInt(btn.dataset.i,10);
+        const removedProfile = profiles[idx];
+        profiles.splice(idx,1);
         if(activeProfileIndex>=profiles.length) activeProfileIndex = profiles.length-1;
+        if(removedProfile && sessionState.affective.samples.length>1){
+          const sIdx = sessionState.affective.samples.findIndex(s=>s.profileId===removedProfile.id);
+          if(sIdx>=0){
+            sessionState.affective.samples.splice(sIdx,1);
+            if(sessionState.affective.reviewIndex>=sessionState.affective.samples.length) sessionState.affective.reviewIndex = sessionState.affective.samples.length-1;
+            renderScoreboard(); renderStepContent(); renderReviewSampleChips(); renderReviewContent();
+          }
+        }
         renderProfileArea();
       });
     });
@@ -984,7 +1005,7 @@
     el.innerHTML = SCALE_LABELS.map(item => `
       <div class="legend-item">
         <span class="legend-num">${item.n}</span>
-        <span class="legend-text">${item.en}${lang==='vi' ? '<span class="legend-vi">'+item.vi+'</span>' : ''}</span>
+        <span class="legend-text">${chipText(item)}</span>
       </div>`).join('');
   }
 
@@ -1023,8 +1044,19 @@
     });
     wrap.querySelectorAll('.sb-del').forEach(btn=>{
       btn.addEventListener('click', ()=>{
-        sessionState.affective.samples.splice(parseInt(btn.dataset.i,10),1);
+        const idx = parseInt(btn.dataset.i,10);
+        const removedSample = sessionState.affective.samples[idx];
+        sessionState.affective.samples.splice(idx,1);
+        if(sessionState.affective.reviewIndex>=sessionState.affective.samples.length) sessionState.affective.reviewIndex = sessionState.affective.samples.length-1;
         renderScoreboard(); renderStepContent(); renderReviewSampleChips(); renderReviewContent();
+        if(removedSample && removedSample.profileId && profiles.length>1){
+          const pIdx = profiles.findIndex(p=>p.id===removedSample.profileId);
+          if(pIdx>=0){
+            profiles.splice(pIdx,1);
+            if(activeProfileIndex>=profiles.length) activeProfileIndex = profiles.length-1;
+            renderProfileArea();
+          }
+        }
       });
     });
     const addBtn = document.getElementById('addSampleBtn');
@@ -1041,9 +1073,9 @@
 
   function renderStepNav(){
     const step = COMBINED_STEPS[sessionState.affective.step];
-    document.getElementById('stepLabel').textContent = t('affStepPrefix')+' '+(sessionState.affective.step+1)+'/'+COMBINED_STEPS.length+' · '+step.en.toUpperCase();
+    document.getElementById('stepLabel').textContent = t('affStepPrefix')+' '+(sessionState.affective.step+1)+'/'+COMBINED_STEPS.length+' · '+chipText(step).toUpperCase();
     const subEl = document.getElementById('stepSub');
-    if(lang==='vi' && step.vi){ subEl.textContent = step.vi; subEl.style.display=''; } else { subEl.style.display='none'; }
+    subEl.style.display = 'none';
     document.getElementById('prevStepBtn').disabled = sessionState.affective.step===0;
     document.getElementById('nextStepBtn').disabled = sessionState.affective.step===COMBINED_STEPS.length-1;
     const dotsWrap = document.getElementById('stepDots');
@@ -1206,7 +1238,7 @@
       <div style="margin-top:16px;">
         ${ATTRS.map(a=>`
           <div class="attr-row">
-            <div class="attr-head"><div class="attr-name">${a.en}${lang==='vi'?'<span class="vi">'+a.vi+'</span>':''}</div><div class="attr-val">${s.ratings[a.key]}</div></div>
+            <div class="attr-head"><div class="attr-name">${chipText(a)}</div><div class="attr-val">${s.ratings[a.key]}</div></div>
             <div class="circle-group" data-review-key="${a.key}">${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="circle${s.ratings[a.key]===n?' active':''}" data-n="${n}">${n}</div>`).join('')}</div>
           </div>`).join('')}
       </div>
@@ -1480,34 +1512,37 @@
     return `<div class="report-section">
       <div class="report-section-title">${t('tabPhysical')}</div>
       <table class="report-table">
-        ${reportRow(t('physicalColorTitle'), p.color)}
+        ${reportRow(t('physicalColorTitle'), p.color ? localizedLabel(p.color, COLOR_OPTIONS) : '')}
         <tr><td class="rl">${t('physicalCat1TotalLabel')}</td><td>${cat1}</td></tr>
         <tr><td class="rl">${t('physicalCat2TotalLabel')}</td><td>${cat2}</td></tr>
         <tr><td class="rl">${t('physicalTotalGreenLabel')}</td><td>${cat1+cat2}</td></tr>
         ${reportRow(t('physicalMoistureLabel'), p.moisture ? p.moisture+'%' : '')}
         ${reportRow(t('physicalNotesTitle'), p.notes)}
       </table>
-      ${sieveRows ? `<table class="report-table"><tr><th style="width:45%">Screen</th><th>Weight</th></tr>${sieveRows}</table>` : ''}
+      ${sieveRows ? `<table class="report-table"><tr><th style="width:45%">${t('reportColScreen')}</th><th>${t('reportColWeight')}</th></tr>${sieveRows}</table>` : ''}
     </div>`;
   }
 
   function buildDescriptiveReportHtml(d){
     if(!d) return '';
+    const loc = (arr,list)=> (arr&&arr.length) ? arr.map(v=>localizedLabel(v,list)).join(', ') : '';
     const rows = [
-      ['Fragrance', d.fragranceIntensity, d.faCata], ['Aroma', d.aromaIntensity, d.faCata],
-      ['Flavor', d.flavorIntensity, d.faaCata], ['Aftertaste', d.aftertasteIntensity, d.faaCata],
-      ['Acidity', d.acidityIntensity, null], ['Sweetness', d.sweetnessIntensity, null], ['Mouthfeel', d.mouthfeelIntensity, d.mouthfeelCata]
-    ].map(([name,intensity,cata])=>`<tr><td>${name}</td><td>${intensity}/15</td><td>${cata&&cata.length?escapeHtml(cata.join(', ')):''}</td></tr>`).join('');
+      [chipText(ATTRS[0]), d.fragranceIntensity, loc(d.faCata,CATA_LIST)], [chipText(ATTRS[1]), d.aromaIntensity, loc(d.faCata,CATA_LIST)],
+      [chipText(ATTRS[2]), d.flavorIntensity, loc(d.faaCata,CATA_LIST)], [chipText(ATTRS[3]), d.aftertasteIntensity, loc(d.faaCata,CATA_LIST)],
+      [chipText(ATTRS[4]), d.acidityIntensity, ''], [chipText(ATTRS[5]), d.sweetnessIntensity, ''], [chipText(ATTRS[6]), d.mouthfeelIntensity, loc(d.mouthfeelCata,MOUTHFEEL_CATA)]
+    ].map(([name,intensity,cata])=>`<tr><td>${name}</td><td>${intensity}/15</td><td>${escapeHtml(cata)}</td></tr>`).join('');
+    const faLabel = chipText(ATTRS[0])+'/'+chipText(ATTRS[1]);
+    const faaLabel = chipText(ATTRS[2])+'/'+chipText(ATTRS[3]);
     return `<div class="report-section">
       <div class="report-section-title">${t('tabDescriptive')}</div>
       ${d.roastLevel?`<div class="report-line"><b>${t('descRoastLabel')}:</b> ${escapeHtml(d.roastLevel)}</div>`:''}
-      <table class="report-table"><tr><th style="width:30%">Section</th><th style="width:20%">Intensity</th><th>Descriptors</th></tr>${rows}</table>
-      ${d.mainTastes&&d.mainTastes.length?`<div class="report-line"><b>Main Tastes:</b> ${escapeHtml(d.mainTastes.join(', '))}</div>`:''}
-      ${d.acidityNotes?`<div class="report-line"><b>Acidity:</b> ${escapeHtml(d.acidityNotes)}</div>`:''}
-      ${d.sweetnessNotes?`<div class="report-line"><b>Sweetness:</b> ${escapeHtml(d.sweetnessNotes)}</div>`:''}
-      ${d.faNotes?`<div class="report-line"><b>Fragrance/Aroma:</b> ${escapeHtml(d.faNotes)}</div>`:''}
-      ${d.faaNotes?`<div class="report-line"><b>Flavor/Aftertaste:</b> ${escapeHtml(d.faaNotes)}</div>`:''}
-      ${d.mouthfeelNotes?`<div class="report-line"><b>Mouthfeel:</b> ${escapeHtml(d.mouthfeelNotes)}</div>`:''}
+      <table class="report-table"><tr><th style="width:30%">${t('reportColSection')}</th><th style="width:20%">${t('reportColIntensity')}</th><th>${t('reportColDescriptors')}</th></tr>${rows}</table>
+      ${d.mainTastes&&d.mainTastes.length?`<div class="report-line"><b>${t('descMainTastesLabel')}:</b> ${escapeHtml(d.mainTastes.map(v=>localizedLabel(v,MAIN_TASTES)).join(', '))}</div>`:''}
+      ${d.acidityNotes?`<div class="report-line"><b>${chipText(ATTRS[4])}:</b> ${escapeHtml(d.acidityNotes)}</div>`:''}
+      ${d.sweetnessNotes?`<div class="report-line"><b>${chipText(ATTRS[5])}:</b> ${escapeHtml(d.sweetnessNotes)}</div>`:''}
+      ${d.faNotes?`<div class="report-line"><b>${faLabel}:</b> ${escapeHtml(d.faNotes)}</div>`:''}
+      ${d.faaNotes?`<div class="report-line"><b>${faaLabel}:</b> ${escapeHtml(d.faaNotes)}</div>`:''}
+      ${d.mouthfeelNotes?`<div class="report-line"><b>${chipText(ATTRS[6])}:</b> ${escapeHtml(d.mouthfeelNotes)}</div>`:''}
     </div>`;
   }
 
@@ -1537,7 +1572,7 @@
     ATTRS.forEach((a,i)=>{
       const p = polarToCartesian(cx,cy,rMax+24,i*angleStep);
       const anchor = p.x > cx+8 ? 'start' : (p.x < cx-8 ? 'end' : 'middle');
-      labels += `<text x="${p.x}" y="${p.y-2}" text-anchor="${anchor}" font-size="9.5" font-weight="700" fill="#3A3A2C" font-family="'Be Vietnam Pro',sans-serif">${a.en.toUpperCase()}</text>
+      labels += `<text x="${p.x}" y="${p.y-2}" text-anchor="${anchor}" font-size="9.5" font-weight="700" fill="#3A3A2C" font-family="'Be Vietnam Pro',sans-serif">${chipText(a).toUpperCase()}</text>
         <text x="${p.x}" y="${p.y+11}" text-anchor="${anchor}" font-size="11" font-weight="700" fill="#0F3B2E" font-family="'IBM Plex Mono',monospace">${sample.ratings[a.key]}/9</text>`;
     });
     return `<svg viewBox="-50 -50 420 420" style="width:100%; max-width:300px; display:block; margin:0 auto; overflow:visible;">
@@ -1552,7 +1587,7 @@
   function buildAffectiveReportHtml(sample){
     if(!sample) return '';
     const {final, sum, u, d} = computeScoreFor(sample);
-    const rows = ATTRS.map(a=>`<tr><td>${a.en}</td><td>${sample.ratings[a.key]}/9</td></tr>`).join('');
+    const rows = ATTRS.map(a=>`<tr><td>${chipText(a)}</td><td>${sample.ratings[a.key]}/9</td></tr>`).join('');
     const titleText = lang==='vi' ? 'CẢM NHẬN / ĐIỂM CUPPING' : 'AFFECTIVE / CUPPING SCORE';
     const totalLabel = lang==='vi' ? 'Tổng điểm' : 'Total Score';
     const pass = final>=80;
@@ -1567,7 +1602,7 @@
         <div><span>${t('affNonUniformCountLabel')}</span><b>${u}</b></div>
         <div><span>${t('affDefectiveCountLabel')}</span><b>${d}</b></div>
       </div>
-      <table class="report-table"><tr><th>Section</th><th>Score</th></tr>${rows}</table>
+      <table class="report-table"><tr><th>${t('reportColSection')}</th><th>${t('reportColScore')}</th></tr>${rows}</table>
       ${sample.notes?`<div class="report-line"><b>${t('descNotesLabel')}:</b> ${escapeHtml(sample.notes)}</div>`:''}
     </div>`;
   }
@@ -1577,48 +1612,48 @@
     const rows = reportRow(t('extCountry'), e.farming.country)+reportRow(t('extRegion'), e.farming.region)+
       reportRow(t('extFarm'), e.farming.farm)+reportRow(t('extProducer'), e.farming.producer)+
       reportRow(t('extSpecies'), e.farming.species)+reportRow(t('extVariety'), e.farming.variety)+reportRow(t('extHarvest'), e.farming.harvest)+
-      reportRow(t('extProcessor'), e.processing.processor)+reportRow(t('extProcessTypeLabel'), e.processing.type)+
+      reportRow(t('extProcessor'), e.processing.processor)+reportRow(t('extProcessTypeLabel'), e.processing.type ? localizedLabel(e.processing.type, PROCESS_TYPES) : '')+
       reportRow(t('extSizeGrade'), e.trading.sizeGrade)+reportRow(t('extOtherGrade'), e.trading.otherGrade)+reportRow(t('extIco'), e.trading.ico)+
-      reportRow(t('extCertTitle'), (e.certifications.list||[]).join(', '));
+      reportRow(t('extCertTitle'), (e.certifications.list||[]).map(v=>localizedLabel(v,CERTIFICATIONS)).join(', '));
     if(!rows.trim()) return '';
     return `<div class="report-section"><div class="report-section-title">${t('tabExtrinsic')}</div><table class="report-table">${rows}</table></div>`;
   }
 
-  function buildReportHtml(profile, sample){
-    if(!profile){ return `<div class="report-empty">${t('reportEmptyHint')}</div>`; }
-    const meta = profile.meta || {};
-    const page1 = `
+  function buildReportHtml(profile, sample, sessionMeta){
+    if(!profile && !sample){ return `<div class="report-empty">${t('reportEmptyHint')}</div>`; }
+    const meta = profile ? (profile.meta || {}) : (sessionMeta || {});
+    const title = profile ? (meta.sampleNo || t('historyNoName')) : (sample ? sample.label : t('historyNoName'));
+    const headerHtml = `
       <div class="report-header">
         <div class="report-brand">SCA Coffee Value Assessment</div>
-        <div class="report-title">${escapeHtml(meta.sampleNo || t('historyNoName'))}</div>
+        <div class="report-title">${escapeHtml(title || t('historyNoName'))}</div>
         <table class="report-meta-table">
           ${reportRow(t('metaDate'), meta.date)}
           ${reportRow(t('metaCupper'), meta.cupper)}
           ${reportRow(t('metaPurpose'), meta.purpose)}
         </table>
       </div>
-      ${buildExtrinsicReportHtml(profile.extrinsic)}
-      ${buildPhysicalReportHtml(profile.physical)}
     `;
-    const page2 = `
-      ${buildDescriptiveReportHtml(sample ? sample.descriptive : null)}
-      ${buildAffectiveReportHtml(sample)}
-      <div class="report-footer">${t('reportGenerated')} ${new Date().toLocaleString()}</div>
-    `;
-    return `<div class="report-page">${page1}</div><div class="report-page">${page2}</div>`;
+    const profileSection = profile ? (buildExtrinsicReportHtml(profile.extrinsic) + buildPhysicalReportHtml(profile.physical)) : '';
+    const cuppingSection = sample ? (buildDescriptiveReportHtml(sample.descriptive) + buildAffectiveReportHtml(sample)) : '';
+    const footer = `<div class="report-footer">${t('reportGenerated')} ${new Date().toLocaleString()}</div>`;
+    if(profile && sample){
+      return `<div class="report-page">${headerHtml}${profileSection}</div><div class="report-page">${cuppingSection}${footer}</div>`;
+    }
+    return `<div class="report-page">${headerHtml}${profileSection}${cuppingSection}${footer}</div>`;
   }
 
   function renderReportPreview(){
     const pid = document.getElementById('reportProfileSelect').value;
     const sval = document.getElementById('reportSessionSampleSelect').value;
     const profile = reportCache.profiles.find(p=>p.id===pid);
-    let sample = null;
+    let sample = null, sessionMeta = null;
     if(sval){
       const parts = sval.split('::');
       const sess = reportCache.sessions.find(s=>s.id===parts[0]);
-      if(sess) sample = ((sess.affective&&sess.affective.samples)||[])[parseInt(parts[1],10)];
+      if(sess){ sample = ((sess.affective&&sess.affective.samples)||[])[parseInt(parts[1],10)]; sessionMeta = sess.meta; }
     }
-    document.getElementById('printReportContent').innerHTML = buildReportHtml(profile, sample);
+    document.getElementById('printReportContent').innerHTML = buildReportHtml(profile, sample, sessionMeta);
   }
 
   async function loadReportOptions(){
